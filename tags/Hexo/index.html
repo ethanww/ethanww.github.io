@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        python小练习：在头像上加上红色的数字｜Ethanw&#39;s Blog
+        Ethanw&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://ethanww.github.io/2017/03/08/python小练习：在头像上加上红色的数字/">
+    <link rel="canonical" href="https://ethanww.github.io/tags/Hexo/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -43,7 +43,7 @@
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="" class="animated fadeIn">
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="true
 " data-ishome = "false" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -125,156 +125,92 @@
 </script>
 
 <!-- Main Content -->
-
-<!--only post-->
-
-
-<img class="wechat-title-img"
-     src="">
-
-
 <style>
-    
-    header.intro-header {
-        background-image: url('')
+    .intro-header .site-heading {
+        margin: 50px;
     }
-
-    
 </style>
 
+<!-- Page Header -->
 <header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <div class="post-heading">
-                    <h1>python小练习：在头像上加上红色的数字</h1>
-                    
-                    <span class="meta">
-                         作者 ethanw
-                        <span>
-                          日期 2017-03-08
-                         </span>
-                    </span>
-                    <div class="tags text-center">
-                        
-                        <a class="tag" href="/tags/#python"
-                           title="python">python</a>
-                        
-                        <a class="tag" href="/tags/#Pillow"
-                           title="Pillow">Pillow</a>
-                        
-                    </div>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading text-center">
+                    <h1>archives</h1>
+                    <span class="subheading">归档</span>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="post-title-haojen">
-        <span>
-            python小练习：在头像上加上红色的数字
-        </span>
     </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <!-- Post Container -->
-            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>在头像上加上红色的数字。类似于微信未读信息的提示效果。类似于:<br><img src="https://camo.githubusercontent.com/d518d3929e4054ce2f9183b23e52908da7e5632d/687474703a2f2f692e696d6775722e636f6d2f736732646b75592e706e673f31" alt=""></p>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>主要使用Pillow模块。通过<code>pip install Pillow</code>安装。</p>
-<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">' add number to your avatar '</span></div><div class="line"></div><div class="line">__author__=<span class="string">'ethanww'</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageFont,ImageDraw</div><div class="line"></div><div class="line">word=<span class="string">u"1"</span></div><div class="line"></div><div class="line">base = Image.open(<span class="string">'avatar.jpg'</span>).convert(<span class="string">'RGBA'</span>)<span class="comment"># 打开原图，转化成RGBA格式</span></div><div class="line">txt=Image.new(<span class="string">'RGBA'</span>,base.size,(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>))      <span class="comment"># 建立一个空白的图，初始化</span></div><div class="line">fnt=ImageFont.truetype(<span class="string">'arial.ttf'</span>,<span class="number">200</span>)    <span class="comment"># 设置字体，这个字体是放在同级目录下的</span></div><div class="line">d=ImageDraw.Draw(txt)</div><div class="line"></div><div class="line">d.text((<span class="number">600</span>,<span class="number">20</span>),<span class="string">"1"</span>,font=fnt,fill=(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)) <span class="comment">#设置文字内容、格式</span></div><div class="line">out=Image.alpha_composite(base,txt)    <span class="comment">#合并</span></div><div class="line"></div><div class="line">out.show() <span class="comment">#输出</span></div></pre></td></tr></table></figure>
-<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="http://i.imgur.com/asXPdkE.png" alt=""></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>1.源代码：<a href="https://github.com/ethanww/PythonExercises" target="_blank" rel="external">https://github.com/ethanww/PythonExercises</a><br>2.Pillow API:<a href="https://pillow.readthedocs.io/en/4.0.x/reference/index.html" target="_blank" rel="external">https://pillow.readthedocs.io/en/4.0.x/reference/index.html</a></p>
-
-                <hr>
-                
-
-                <ul class="pager">
-                    
-                    
-                    <li class="next">
-                        <a href="/2017/02/08/使用hexo-Github-Pages搭建你的第一个个人博客/" data-toggle="tooltip" data-placement="top"
-                           title="使用hexo+Github Pages搭建你的第一个个人博客">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
-
-                
-
-                
-                <!-- disqus 评论框 start -->
-                <div class="comment">
-                    <div id="disqus_thread" class="disqus-thread"></div>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!-- archive list -->
+            
+				
+				
+				
+					
+					
+					<div class="archive archive-year" data-date="2017">
+						<h2 class="archive-title">
+						<span class="fa fa-archive">
+							<a href="/archives/2017">2017</a>
+						</span>
+						</h2>
+				
+				
+					
+					
+					<div class="archive archive-month" data-date="201703">
+						<h3 class="archive-title">
+							<a href="/archives/2017/03">03</a>
+						</h3>
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2017/03/08/python小练习：在头像上加上红色的数字/">
+                        <h4 class="post-title">
+                            python小练习：在头像上加上红色的数字
+                        </h4>
+                        
+                    </a>
                 </div>
-                <!-- disqus 评论框 end -->
-                
-
-            </div>
-
-            <div class="hidden-xs col-sm-3 toc-col">
-                <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目："><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源代码"><span class="toc-text">源代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图"><span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+				<hr>
+				</div>
+            
+				
+				
+				
+				
+					
+					</div><!--month-->
+					
+					
+					<div class="archive archive-month" data-date="201702">
+						<h3 class="archive-title">
+							<a href="/archives/2017/02">02</a>
+						</h3>
+				
+				<div class="one-tag-list">
+                <div class="post-preview">
+                    <a href="/2017/02/08/使用hexo-Github-Pages搭建你的第一个个人博客/">
+                        <h4 class="post-title">
+                            使用hexo+Github Pages搭建你的第一个个人博客
+                        </h4>
+                        
+                    </a>
                 </div>
-            </div>
+				<hr>
+				</div>
+            
         </div>
-
-        <div class="row">
-            <!-- Sidebar Container -->
-
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5 class="text-center">
-                        <a href="/tags/">FEATURED TAGS</a>
-                    </h5>
-                    <div class="tags">
-                        
-                        <a class="tag" href="/tags/#python"
-                           title="python">python</a>
-                        
-                        <a class="tag" href="/tags/#Pillow"
-                           title="Pillow">Pillow</a>
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-            </div>
-        </div>
-
     </div>
-</article>
-
-
-
-<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "ethanw";
-    var disqus_identifier = "https://ethanww.github.io/2017/03/08/python小练习：在头像上加上红色的数字/";
-    var disqus_url = "https://ethanww.github.io/2017/03/08/python小练习：在头像上加上红色的数字/";
-
-    (function () {
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<!-- disqus 公共JS代码 end -->
-
-
-
+</div>
 
 <!-- Footer -->
 <!-- Footer -->
