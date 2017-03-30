@@ -37,7 +37,7 @@
 <style>
 
     header.intro-header {
-        background-image: url('//o7bkkhiex.bkt.clouddn.com/lion-blur-bg.jpg')
+        background-image: url('null')
     }
 </style>
 <!-- hack iOS CSS :active style -->
@@ -79,13 +79,9 @@
                     
                         
 							
-								
-							
-						
-                    
-                        
-							
-								
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
 							
 						
                     
@@ -97,11 +93,15 @@
 							
 						
                     
+                        
+							
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+							
+						
+                    
 					
-					
-						<li>
-							<a href="/about">About</a>
-						</li>
 					
                 </ul>
             </div>
@@ -197,7 +197,7 @@
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
                 <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>在头像上加上红色的数字。类似于微信未读信息的提示效果。类似于:<br><img src="https://camo.githubusercontent.com/d518d3929e4054ce2f9183b23e52908da7e5632d/687474703a2f2f692e696d6775722e636f6d2f736732646b75592e706e673f31" alt=""></p>
 <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>主要使用Pillow模块。通过<code>pip install Pillow</code>安装。</p>
-<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">' add number to your avatar '</span></div><div class="line"></div><div class="line">__author__=<span class="string">'ethanww'</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageFont,ImageDraw</div><div class="line"></div><div class="line">word=<span class="string">u"1"</span></div><div class="line"></div><div class="line">base = Image.open(<span class="string">'avatar.jpg'</span>).convert(<span class="string">'RGBA'</span>)<span class="comment"># 打开原图，转化成RGBA格式</span></div><div class="line">txt=Image.new(<span class="string">'RGBA'</span>,base.size,(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>))      <span class="comment"># 建立一个空白的图，初始化</span></div><div class="line">fnt=ImageFont.truetype(<span class="string">'arial.ttf'</span>,<span class="number">200</span>)    <span class="comment"># 设置字体，这个字体是放在同级目录下的</span></div><div class="line">d=ImageDraw.Draw(txt)</div><div class="line"></div><div class="line">d.text((<span class="number">600</span>,<span class="number">20</span>),<span class="string">"1"</span>,font=fnt,fill=(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)) <span class="comment">#设置文字内容、格式</span></div><div class="line">out=Image.alpha_composite(base,txt)    <span class="comment">#合并</span></div><div class="line"></div><div class="line">out.show() <span class="comment">#输出</span></div></pre></td></tr></table></figure>
+<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">' add number to your avatar '</span></div><div class="line"></div><div class="line">__author__=<span class="string">'ethanww'</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageFont,ImageDraw</div><div class="line"></div><div class="line">word=<span class="string">u"1"</span></div><div class="line"></div><div class="line">base = Image.open(<span class="string">'avatar.jpg'</span>).convert(<span class="string">'RGBA'</span>)<span class="comment"># 打开原图，转化成RGBA格式</span></div><div class="line">txt=Image.new(<span class="string">'RGBA'</span>,base.size,(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>))      <span class="comment"># 建立一个空白的图，初始化</span></div><div class="line">fnt=ImageFont.truetype(<span class="string">'arial.ttf'</span>,<span class="number">200</span>)    <span class="comment"># 设置字体，这个字体是放在同级目录下的</span></div><div class="line">d=ImageDraw.Draw(txt)</div><div class="line"></div><div class="line">d.text((<span class="number">600</span>,<span class="number">20</span>),<span class="string">"1"</span>,font=fnt,fill=(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)) <span class="comment">#设置文字内容、格式</span></div><div class="line">out=Image.alpha_composite(base,txt)    <span class="comment">#合并</span></div><div class="line"></div><div class="line">out.show() <span class="comment">#输出</span></div></pre></td></tr></table></figure>
 <h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="http://i.imgur.com/asXPdkE.png" alt=""></p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>1.源代码：<a href="https://github.com/ethanww/PythonExercises" target="_blank" rel="external">https://github.com/ethanww/PythonExercises</a><br>2.Pillow API:<a href="https://pillow.readthedocs.io/en/4.0.x/reference/index.html" target="_blank" rel="external">https://pillow.readthedocs.io/en/4.0.x/reference/index.html</a></p>
 
@@ -209,7 +209,7 @@
                     
                     <li class="next">
                         <a href="/2017/02/08/使用hexo-Github-Pages搭建你的第一个个人博客/" data-toggle="tooltip" data-placement="top"
-                           title="“使用hexo+Github Pages搭建你的第一个个人博客”">Next Post &rarr;</a>
+                           title="使用hexo+Github Pages搭建你的第一个个人博客">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -302,7 +302,7 @@
                 
                 
                     <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/鱼罐头啊">
+                        <a target="_blank" href="https://www.zhihu.com/people/yu-guan-tou-a">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa  fa-stack-1x fa-inverse">知</i>
@@ -313,7 +313,7 @@
 
                 
                     <li>
-                        <a target="_blank" href="http://weibo.com/阿鱼在上学">
+                        <a target="_blank" href="http://weibo.com/2956289533">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
