@@ -200,14 +200,14 @@
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
                 <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>将上一题生成的200个优惠券保存到MySQL关系型数据库中</p>
 <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>这里使用了PyMySQL，这是Python3.x(博主的环境是python3.5)版本中用于连接MySQL服务器的一个库。如果你使用的是2.x的版本，那么可以使用mysqldb。</p>
-<p>###步骤<br>首先，需要安装PyMySQL，建议使用pip，方便快捷：)<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pip install PyMySQL</div></pre></td></tr></table></figure></p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>首先，需要安装PyMySQL，建议使用pip，方便快捷：)<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pip install PyMySQL</div></pre></td></tr></table></figure></p>
 <p>然后安装mysql，网上资源很多，这里篇幅有限，不再赘述。安装完成后，写一个coupon.sql文件创建数据库和表</p>
 <p>然后执行：<br><code>mysql -u root -p &lt;coupon.sql</code></p>
 <p>没有出现问题表示创建成功。<br>然后，我们开始写代码</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">'''</span></div><div class="line">@author:ethanw</div><div class="line">'''</div><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"><span class="keyword">from</span> day2.day2 <span class="keyword">import</span> random_coupon</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">store2mysql</span><span class="params">(num,length)</span>:</span></div><div class="line">    db=pymysql.connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"coupon"</span>,<span class="string">"coupon"</span>)  <span class="comment">#打开数据库连接</span></div><div class="line">    cursor=db.cursor()  <span class="comment">#使用cursor()方法获取操作游标</span></div><div class="line">    coupon_list = random_coupon(num, length)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</div><div class="line">        sql=<span class="string">"""INSERT INTO store(coupon)</span></div><div class="line">VALUES ('%s')""" %coupon_list[i]</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            cursor.execute(sql) <span class="comment">#将sql语句插入表中</span></div><div class="line">            db.commit()</div><div class="line">        <span class="keyword">except</span>:</div><div class="line">            db.rollback()</div><div class="line">    db.close()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    num = <span class="number">200</span></div><div class="line">    length = <span class="number">10</span></div><div class="line">    store2mysql(num,length)</div></pre></td></tr></table></figure>
 <p>运行后可以查看结果</p>
 <p><img src="http://i.imgur.com/NJsROUg.png" alt=""></p>
-<p>###参考<br>源代码：<a href="https://github.com/ethanww/PythonExercises/blob/master/day3/day3.py" target="_blank" rel="external">https://github.com/ethanww/PythonExercises/blob/master/day3/day3.py</a><br>PyMySQL官方文档：<a href="https://github.com/PyMySQL/PyMySQL" target="_blank" rel="external">https://github.com/PyMySQL/PyMySQL</a><br>国内的一个PyMySQL教程：<a href="http://www.runoob.com/python3/python3-mysql.html" target="_blank" rel="external">http://www.runoob.com/python3/python3-mysql.html</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>源代码：<a href="https://github.com/ethanww/PythonExercises/blob/master/day3/day3.py" target="_blank" rel="external">https://github.com/ethanww/PythonExercises/blob/master/day3/day3.py</a><br>PyMySQL官方文档：<a href="https://github.com/PyMySQL/PyMySQL" target="_blank" rel="external">https://github.com/PyMySQL/PyMySQL</a><br>国内的一个PyMySQL教程：<a href="http://www.runoob.com/python3/python3-mysql.html" target="_blank" rel="external">http://www.runoob.com/python3/python3-mysql.html</a></p>
 
                 <hr>
                 
@@ -236,7 +236,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目："><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目："><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
                 </div>
             </div>
         </div>
