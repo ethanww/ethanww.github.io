@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        python小练习(3):将优惠券保存到MySQL中｜Ethanw&#39;s Blog
+        python小练习(4)：将优惠券保存到MongoDB｜Ethanw&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://ethanww.github.io/2017/04/11/python小练习-3-将优惠券保存到MySQL中/">
+    <link rel="canonical" href="https://ethanww.github.io/2017/04/14/python小练习-4-：将优惠券保存到MongoDB/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -161,12 +161,12 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>python小练习(3):将优惠券保存到MySQL中</h1>
+                    <h1>python小练习(4)：将优惠券保存到MongoDB</h1>
                     
                     <span class="meta">
                          作者 ethanw
                         <span>
-                          日期 2017-04-11
+                          日期 2017-04-14
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -174,8 +174,8 @@
                         <a class="tag" href="/tags/#python"
                            title="python">python</a>
                         
-                        <a class="tag" href="/tags/#MySQL"
-                           title="MySQL">MySQL</a>
+                        <a class="tag" href="/tags/#MongoDB"
+                           title="MongoDB">MongoDB</a>
                         
                     </div>
                 </div>
@@ -184,7 +184,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            python小练习(3):将优惠券保存到MySQL中
+            python小练习(4)：将优惠券保存到MongoDB
         </span>
     </div>
 </header>
@@ -195,32 +195,22 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>将上一题生成的200个优惠券保存到MySQL关系型数据库中</p>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>这里使用了PyMySQL，这是Python3.x(博主的环境是python3.5)版本中用于连接MySQL服务器的一个库。如果你使用的是2.x的版本，那么可以使用mysqldb。</p>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>首先，需要安装PyMySQL，建议使用pip，方便快捷：)<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pip install PyMySQL</div></pre></td></tr></table></figure></p>
-<p>然后安装mysql，网上资源很多，这里篇幅有限，不再赘述。安装完成后，写一个coupon.sql文件创建数据库和表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">-- coupon.sql</div><div class="line"></div><div class="line">drop database if exists coupon;</div><div class="line">CREATE database coupon;</div><div class="line"></div><div class="line">use coupon;</div><div class="line"></div><div class="line">grant select, insert, update, delete on coupon.* to &apos;root&apos;@&apos;localhost&apos; identified by &apos;coupon&apos;;</div><div class="line"></div><div class="line">CREATE TABLE store(</div><div class="line">    `id` INT NOT NULL AUTO_INCREMENT,</div><div class="line">    `coupon` VARCHAR(10) NOT NULL ,</div><div class="line">    primary key (`id`)</div><div class="line">) engine=innodb default charset=utf8;</div></pre></td></tr></table></figure>
-<p>然后执行：<br><code>mysql -u root -p &lt;coupon.sql</code></p>
-<p>没有出现问题表示创建成功。<br>然后，我们开始写代码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">'''</span></div><div class="line">@author:ethanw</div><div class="line">'''</div><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"><span class="keyword">from</span> day2.day2 <span class="keyword">import</span> random_coupon</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">store2mysql</span><span class="params">(num,length)</span>:</span></div><div class="line">    db=pymysql.connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"coupon"</span>,<span class="string">"coupon"</span>)  <span class="comment">#打开数据库连接</span></div><div class="line">    cursor=db.cursor()  <span class="comment">#使用cursor()方法获取操作游标</span></div><div class="line">    coupon_list = random_coupon(num, length)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</div><div class="line">        sql=<span class="string">"""INSERT INTO store(coupon)</span></div><div class="line">VALUES ('%s')""" %coupon_list[i]</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            cursor.execute(sql) <span class="comment">#将sql语句插入表中</span></div><div class="line">            db.commit()</div><div class="line">        <span class="keyword">except</span>:</div><div class="line">            db.rollback()</div><div class="line">    cursor.close()</div><div class="line">    db.close()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    num = <span class="number">200</span></div><div class="line">    length = <span class="number">10</span></div><div class="line">    store2mysql(num,length)</div></pre></td></tr></table></figure>
-<p>运行后可以查看结果</p>
-<p><img src="http://i.imgur.com/NJsROUg.png" alt=""></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>源代码：<a href="https://github.com/ethanww/PythonExercises/blob/master/day3/day3.py" target="_blank" rel="external">https://github.com/ethanww/PythonExercises/blob/master/day3/day3.py</a><br>PyMySQL官方文档：<a href="https://github.com/PyMySQL/PyMySQL" target="_blank" rel="external">https://github.com/PyMySQL/PyMySQL</a><br>国内的一个PyMySQL教程：<a href="http://www.runoob.com/python3/python3-mysql.html" target="_blank" rel="external">http://www.runoob.com/python3/python3-mysql.html</a></p>
+                <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>题目要求是将生成的激活码保存到<strong>Redis</strong>非关系型数据库中。因为博主最近一直在学习flask/django，用MongoDB比较多，所以把题目修改了一下，保存到<strong>MongoDB</strong>中:)</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>首先我们要安装MongoDB，安装可以参考<a href="https://www.mongodb.com/" target="_blank" rel="external">官网</a>，这里我就不赘述了。<br>其次，我们要用到Pymongo这个驱动，使用pip包管理工具安装它<br><code>pip install pymongo</code></p>
+<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">'''</span></div><div class="line">@author:ethanw</div><div class="line">'''</div><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line"><span class="keyword">from</span> pymongo.errors <span class="keyword">import</span> ConnectionFailure</div><div class="line"><span class="keyword">from</span> day2.day2 <span class="keyword">import</span> random_coupon</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_connection</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        client = MongoClient(<span class="string">'localhost'</span>, <span class="number">27017</span>)  <span class="comment"># 创建连接</span></div><div class="line">        print(<span class="string">"connect successfully"</span>)</div><div class="line">        <span class="keyword">return</span> client</div><div class="line">    <span class="keyword">except</span> ConnectionFailure:</div><div class="line">        exit()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">store2mongodb</span><span class="params">(num,length,client)</span>:</span></div><div class="line">    db=client[<span class="string">"mydb"</span>]</div><div class="line">    coupon_list = random_coupon(num, length)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):  <span class="comment"># 将200条优惠券信息存入文档中</span></div><div class="line">        coupon_doc=&#123;</div><div class="line">            <span class="string">"coupon"</span>:coupon_list[i]</div><div class="line">        &#125;</div><div class="line">        db.coupons.insert(coupon_doc)</div><div class="line">    print(<span class="string">"success!"</span>)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    client=create_connection()</div><div class="line">    num = <span class="number">200</span></div><div class="line">    length = <span class="number">10</span></div><div class="line">    store2mongodb(num,length,client)</div></pre></td></tr></table></figure>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>在命令行查看结果，截图如下，表示我们存入成功了<br><img src="http://i.imgur.com/5qYF3cO.png" alt=""></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>源代码：<a href="https://github.com/ethanww/PythonExercises/blob/master/day4/day4.py" target="_blank" rel="external">https://github.com/ethanww/PythonExercises/blob/master/day4/day4.py</a><br>mongoDB官网：<a href="https://www.mongodb.com/" target="_blank" rel="external">https://www.mongodb.com/</a><br>PyMongo官网：<a href="http://api.mongodb.com/python/current/tutorial.html" target="_blank" rel="external">http://api.mongodb.com/python/current/tutorial.html</a><br>董伟明的一个例子：<a href="http://www.dongwm.com/old/archives/pymongo%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="external">http://www.dongwm.com/old/archives/pymongo%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/
+</a></p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2017/04/14/python小练习-4-：将优惠券保存到MongoDB/" data-toggle="tooltip" data-placement="top"
-                           title="python小练习(4)：将优惠券保存到MongoDB">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2017/04/04/python小练习(2)：生成优惠券/" data-toggle="tooltip" data-placement="top"
-                           title="python小练习(2)：生成优惠券">Next Post &rarr;</a>
+                        <a href="/2017/04/11/python小练习-3-将优惠券保存到MySQL中/" data-toggle="tooltip" data-placement="top"
+                           title="python小练习(3):将优惠券保存到MySQL中">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -239,7 +229,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目："><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤"><span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目："><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源代码"><span class="toc-text">源代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结果"><span class="toc-text">结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
                 </div>
             </div>
         </div>
@@ -264,8 +254,8 @@
                         <a class="tag" href="/tags/#python"
                            title="python">python</a>
                         
-                        <a class="tag" href="/tags/#MySQL"
-                           title="MySQL">MySQL</a>
+                        <a class="tag" href="/tags/#MongoDB"
+                           title="MongoDB">MongoDB</a>
                         
                     </div>
                 </section>
@@ -285,8 +275,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "ethanw";
-    var disqus_identifier = "https://ethanww.github.io/2017/04/11/python小练习-3-将优惠券保存到MySQL中/";
-    var disqus_url = "https://ethanww.github.io/2017/04/11/python小练习-3-将优惠券保存到MySQL中/";
+    var disqus_identifier = "https://ethanww.github.io/2017/04/14/python小练习-4-：将优惠券保存到MongoDB/";
+    var disqus_url = "https://ethanww.github.io/2017/04/14/python小练习-4-：将优惠券保存到MongoDB/";
 
     (function () {
         var dsq = document.createElement('script');
