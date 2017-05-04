@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        python小练习(5):统计单词出现次数｜Ethanw&#39;s Blog
+        python小练习(6)更改文件夹下的照片目录｜Ethanw&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://ethanww.github.io/2017/05/03/python小练习-5-统计单词出现次数/">
+    <link rel="canonical" href="https://ethanww.github.io/2017/05/04/python小练习-6-更改文件夹下的照片目录/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -161,12 +161,12 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>python小练习(5):统计单词出现次数</h1>
+                    <h1>python小练习(6)更改文件夹下的照片目录</h1>
                     
                     <span class="meta">
                          作者 ethanw
                         <span>
-                          日期 2017-05-03
+                          日期 2017-05-04
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -174,8 +174,8 @@
                         <a class="tag" href="/tags/#python"
                            title="python">python</a>
                         
-                        <a class="tag" href="/tags/#正则表达式"
-                           title="正则表达式">正则表达式</a>
+                        <a class="tag" href="/tags/#PIL"
+                           title="PIL">PIL</a>
                         
                     </div>
                 </div>
@@ -184,7 +184,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            python小练习(5):统计单词出现次数
+            python小练习(6)更改文件夹下的照片目录
         </span>
     </div>
 </header>
@@ -195,26 +195,25 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>任一个英文的纯文本文件，统计其中的单词出现的个数。</p>
-<h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><p>博主在网上找了一个.txt文件作为测试，大家如果不想找的话也可以直接用<a href="https://github.com/ethanww/PythonExercises/blob/master/day5/test.txt" target="_blank" rel="external">我的</a>。这里主要用到了python的正则表达式库re。博主最早是在廖雪峰老师的<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143193331387014ccd1040c814dee8b2164bb4f064cff000" target="_blank" rel="external">python教程</a>中学的re库，最近在学爬虫，又用到正则表达式了。这个库还是挺有用的，建议看到的同学好好学习一下。</p>
-<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">'''</span></div><div class="line">@author:ethanw</div><div class="line">'''</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_word</span><span class="params">(filename)</span>:</span></div><div class="line">    dict=&#123;&#125;</div><div class="line">    pat=re.compile(<span class="string">r'[A-Za-z]+'</span>)</div><div class="line">    <span class="keyword">with</span> open(filename,<span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</div><div class="line">            <span class="comment"># words=line.split()</span></div><div class="line">            words=pat.findall(line)</div><div class="line">            <span class="keyword">for</span> word <span class="keyword">in</span> words:</div><div class="line">                <span class="keyword">if</span> word.lower() <span class="keyword">in</span> dict:</div><div class="line">                    dict[word.lower()]+=<span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    dict[word.lower()]=<span class="number">1</span></div><div class="line">        <span class="keyword">for</span> item,value <span class="keyword">in</span> dict.items():</div><div class="line">            print(<span class="string">'%s occurs %s times'</span>%(item,value))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    count_word(<span class="string">'test.txt'</span>)</div></pre></td></tr></table></figure>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="http://i.imgur.com/hbqZoNw.png" alt=""></p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>源代码：<a href="https://github.com/ethanww/PythonExercises/tree/master/day5" target="_blank" rel="external">https://github.com/ethanww/PythonExercises/tree/master/day5</a></p>
+                <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>将一个目录中的所有照片尺寸变成不大于iphone5（现在都iphone7了！）。</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>这道题不来不想做的…第一道题不就是用PIL库嘛！这怎么又来一道！没什么意思啊…不过，谁叫我有点“精神洁癖”呢…好吧，还是做吧！</p>
+<p>回到正文，如上所述，这道题应该用PIL库。图片我是在google上找的，大小都不一样，放在项目的pic子文件夹中。</p>
+<p><img src="http://i.imgur.com/hFK0rfh.png" alt=""></p>
+<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">'''</span></div><div class="line">读取pic文件夹中的图片，并改变其分辨率</div><div class="line">'''</div><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</div><div class="line"></div><div class="line"><span class="comment"># def find_picture(path):</span></div><div class="line"><span class="comment">#     files=os</span></div><div class="line"><span class="string">'''假定ip5的屏幕大小为400*300'''</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fixed_size</span><span class="params">(in_dir,out_dir,width=<span class="number">400</span>,height=<span class="number">300</span>)</span>:</span></div><div class="line">    imgs=os.listdir(in_dir)</div><div class="line">    <span class="keyword">for</span> img_name <span class="keyword">in</span> imgs:</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            img_path = os.path.join(in_dir, img_name)</div><div class="line">            img = Image.open(img_path)</div><div class="line">            img_out = img.resize((width, height), Image.ANTIALIAS)  <span class="comment"># antialias：在所有的像素上使用高质量的重采样过滤器输出像素值</span></div><div class="line">            img_out.save(os.path.join(out_dir, img_name))</div><div class="line">            print(<span class="string">'success change %s to %d * %d'</span> % (img_name, width, height))</div><div class="line">        <span class="keyword">except</span> IOError:</div><div class="line">            print(<span class="string">'cannot change %s to %d * %d'</span> % (img_name, width, height))</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    in_dir=<span class="string">r'C:\Users\ethanw-pc\Desktop\python\PythonExercises\day6\pic'</span></div><div class="line">    out_dir=<span class="string">r'C:\Users\ethanw-pc\Desktop\python\PythonExercises\day6\pic_out'</span></div><div class="line">    fixed_size(in_dir,out_dir)</div></pre></td></tr></table></figure>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>在输出文件夹中，可以看到已经有了同名的照片了，右键详细看一下，大小就是我们要的400*300（当然你可以以尝试一下其它的比例），搞定！</p>
+<p><img src="http://i.imgur.com/mAlDfzX.png" alt=""></p>
+<p><img src="http://i.imgur.com/7UDFzFg.png" alt=""></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>源代码：<a href="https://github.com/ethanww/PythonExercises/tree/master/day6" target="_blank" rel="external">https://github.com/ethanww/PythonExercises/tree/master/day6</a><br>PIL文档：<a href="http://pillow.readthedocs.io/en/3.1.x/reference/Image.html" target="_blank" rel="external">http://pillow.readthedocs.io/en/3.1.x/reference/Image.html</a><br>How do I resize an image using PIL and maintain its aspect ratio?：<a href="http://stackoverflow.com/questions/273946/how-do-i-resize-an-image-using-pil-and-maintain-its-aspect-ratio" target="_blank" rel="external">http://stackoverflow.com/questions/273946/how-do-i-resize-an-image-using-pil-and-maintain-its-aspect-ratio</a></p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2017/05/04/python小练习-6-更改文件夹下的照片目录/" data-toggle="tooltip" data-placement="top"
-                           title="python小练习(6)更改文件夹下的照片目录">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2017/04/14/python小练习-4-：将优惠券保存到MongoDB/" data-toggle="tooltip" data-placement="top"
-                           title="python小练习(4)：将优惠券保存到MongoDB">Next Post &rarr;</a>
+                        <a href="/2017/05/03/python小练习-5-统计单词出现次数/" data-toggle="tooltip" data-placement="top"
+                           title="python小练习(5):统计单词出现次数">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -233,7 +232,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目："><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明："><span class="toc-text">说明：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源代码"><span class="toc-text">源代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结果"><span class="toc-text">结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目："><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源码"><span class="toc-text">源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结果"><span class="toc-text">结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
                 </div>
             </div>
         </div>
@@ -258,8 +257,8 @@
                         <a class="tag" href="/tags/#python"
                            title="python">python</a>
                         
-                        <a class="tag" href="/tags/#正则表达式"
-                           title="正则表达式">正则表达式</a>
+                        <a class="tag" href="/tags/#PIL"
+                           title="PIL">PIL</a>
                         
                     </div>
                 </section>
@@ -279,8 +278,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "ethanw";
-    var disqus_identifier = "https://ethanww.github.io/2017/05/03/python小练习-5-统计单词出现次数/";
-    var disqus_url = "https://ethanww.github.io/2017/05/03/python小练习-5-统计单词出现次数/";
+    var disqus_identifier = "https://ethanww.github.io/2017/05/04/python小练习-6-更改文件夹下的照片目录/";
+    var disqus_url = "https://ethanww.github.io/2017/05/04/python小练习-6-更改文件夹下的照片目录/";
 
     (function () {
         var dsq = document.createElement('script');
