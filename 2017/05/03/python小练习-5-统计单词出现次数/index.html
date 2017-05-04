@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        Ethanw&#39;s Blog
+        python小练习(5):统计单词出现次数｜Ethanw&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://ethanww.github.io/archives/">
+    <link rel="canonical" href="https://ethanww.github.io/2017/05/03/python小练习-5-统计单词出现次数/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -43,7 +43,7 @@
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="" class="animated fadeIn">
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
 " data-ishome = "false" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -139,190 +139,161 @@
 </script>
 
 <!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/assets/img/post-default.jpg">
+
+
 <style>
-    .intro-header .site-heading {
-        margin: 50px;
+    
+    header.intro-header {
+        background-image: url('/assets/img/post-default.jpg')
     }
+
+    
 </style>
 
-<!-- Page Header -->
 <header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading text-center">
-                    <h1>archives</h1>
-                    <span class="subheading">归档</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>python小练习(5):统计单词出现次数</h1>
+                    
+                    <span class="meta">
+                         作者 ethanw
+                        <span>
+                          日期 2017-05-03
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#python"
+                           title="python">python</a>
+                        
+                        <a class="tag" href="/tags/#正则表达式"
+                           title="正则表达式">正则表达式</a>
+                        
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="post-title-haojen">
+        <span>
+            python小练习(5):统计单词出现次数
+        </span>
+    </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- archive list -->
-            
-				
-				
-				
-					
-					
-					<div class="archive archive-year" data-date="2017">
-						<h2 class="archive-title">
-						<span class="fa fa-archive">
-							<a href="/archives/2017">2017</a>
-						</span>
-						</h2>
-				
-				
-					
-					
-					<div class="archive archive-month" data-date="201705">
-						<h3 class="archive-title">
-							<a href="/archives/2017/05">05</a>
-						</h3>
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/05/04/python小练习-6-更改文件夹下的照片目录/">
-                        <h4 class="post-title">
-                            'python小练习-6-更改文件夹下的照片目录'
-                        </h4>
-                        
-                    </a>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>任一个英文的纯文本文件，统计其中的单词出现的个数。</p>
+<p>###说明：<br>博主在网上找了一个.txt文件作为测试，大家如果不想找的话也可以直接用<a href="https://github.com/ethanww/PythonExercises/blob/master/day5/test.txt" target="_blank" rel="external">我的</a>。这里主要用到了python的正则表达式库re。博主最早是在廖雪峰老师的<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143193331387014ccd1040c814dee8b2164bb4f064cff000" target="_blank" rel="external">python教程</a>中学的re库，最近在学爬虫，又用到正则表达式了。这个库还是挺有用的，建议看到的同学好好学习一下。</p>
+<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="string">'''</span></div><div class="line">@author:ethanw</div><div class="line">'''</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_word</span><span class="params">(filename)</span>:</span></div><div class="line">    dict=&#123;&#125;</div><div class="line">    pat=re.compile(<span class="string">r'[A-Za-z]+'</span>)</div><div class="line">    <span class="keyword">with</span> open(filename,<span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</div><div class="line">            <span class="comment"># words=line.split()</span></div><div class="line">            words=pat.findall(line)</div><div class="line">            <span class="keyword">for</span> word <span class="keyword">in</span> words:</div><div class="line">                <span class="keyword">if</span> word.lower() <span class="keyword">in</span> dict:</div><div class="line">                    dict[word.lower()]+=<span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    dict[word.lower()]=<span class="number">1</span></div><div class="line">        <span class="keyword">for</span> item,value <span class="keyword">in</span> dict.items():</div><div class="line">            print(<span class="string">'%s occurs %s times'</span>%(item,value))</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    count_word(<span class="string">'test.txt'</span>)</div></pre></td></tr></table></figure>
+<p>###结果<br><img src="http://i.imgur.com/hbqZoNw.png" alt=""></p>
+<p>###参考<br>源代码：<a href="https://github.com/ethanww/PythonExercises/tree/master/day5" target="_blank" rel="external">https://github.com/ethanww/PythonExercises/tree/master/day5</a></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/05/04/python小练习-6-更改文件夹下的照片目录/" data-toggle="tooltip" data-placement="top"
+                           title="'python小练习-6-更改文件夹下的照片目录'">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/04/14/python小练习-4-：将优惠券保存到MongoDB/" data-toggle="tooltip" data-placement="top"
+                           title="python小练习(4)：将优惠券保存到MongoDB">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
                 </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/05/03/python小练习-5-统计单词出现次数/">
-                        <h4 class="post-title">
-                            python小练习(5):统计单词出现次数
-                        </h4>
-                        
-                    </a>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目："><span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源代码"><span class="toc-text">源代码</span></a></li></ol>
                 </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-					
-					</div><!--month-->
-					
-					
-					<div class="archive archive-month" data-date="201704">
-						<h3 class="archive-title">
-							<a href="/archives/2017/04">04</a>
-						</h3>
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/04/14/python小练习-4-：将优惠券保存到MongoDB/">
-                        <h4 class="post-title">
-                            python小练习(4)：将优惠券保存到MongoDB
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/04/11/python小练习-3-将优惠券保存到MySQL中/">
-                        <h4 class="post-title">
-                            python小练习(3):将优惠券保存到MySQL中
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/04/04/python小练习(2)：生成优惠券/">
-                        <h4 class="post-title">
-                            python小练习(2)：生成优惠券
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-					
-					</div><!--month-->
-					
-					
-					<div class="archive archive-month" data-date="201703">
-						<h3 class="archive-title">
-							<a href="/archives/2017/03">03</a>
-						</h3>
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/03/08/python小练习(1)：在头像上加上红色的数字/">
-                        <h4 class="post-title">
-                            python小练习(1)：在头像上加上红色的数字
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
-				
-				
-				
-				
-					
-					</div><!--month-->
-					
-					
-					<div class="archive archive-month" data-date="201702">
-						<h3 class="archive-title">
-							<a href="/archives/2017/02">02</a>
-						</h3>
-				
-				<div class="one-tag-list">
-                <div class="post-preview">
-                    <a href="/2017/02/08/使用hexo-Github-Pages搭建你的第一个个人博客/">
-                        <h4 class="post-title">
-                            使用hexo+Github Pages搭建你的第一个个人博客
-                        </h4>
-                        
-                    </a>
-                </div>
-				<hr>
-				</div>
-            
+            </div>
         </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#python"
+                           title="python">python</a>
+                        
+                        <a class="tag" href="/tags/#正则表达式"
+                           title="正则表达式">正则表达式</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
     </div>
-</div>
+</article>
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "ethanw";
+    var disqus_identifier = "https://ethanww.github.io/2017/05/03/python小练习-5-统计单词出现次数/";
+    var disqus_url = "https://ethanww.github.io/2017/05/03/python小练习-5-统计单词出现次数/";
+
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
 
 <!-- Footer -->
 <!-- Footer -->
