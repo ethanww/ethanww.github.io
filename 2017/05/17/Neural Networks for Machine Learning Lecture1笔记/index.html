@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ethanw的小板凳">
+    <meta name="keyword" content="python">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="/assets/img/avatar-default.jpg">
+    <link rel="alternate" type="application/atom+xml" title="Ethanw" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Neural Networks for Machine Learning Lecture1笔记｜Ethanw&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://ethanww.github.io/2017/05/17/Neural Networks for Machine Learning Lecture1笔记/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('null')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Ethanw
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/assets/img/post-default.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/assets/img/post-default.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Neural Networks for Machine Learning Lecture1笔记</h1>
+                    
+                    <span class="meta">
+                         作者 ethanw
+                        <span>
+                          日期 2017-05-17
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Neural Network"
+                           title="Neural Network">Neural Network</a>
+                        
+                        <a class="tag" href="/tags/#Machine Learning"
+                           title="Machine Learning">Machine Learning</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Neural Networks for Machine Learning Lecture1笔记
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="Lecture-1-Introduction"><a href="#Lecture-1-Introduction" class="headerlink" title="Lecture 1: Introduction"></a>Lecture 1: Introduction</h1><h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>最近开始在Coursera上面学习Geoffrey Hinton教授的Nerual Networks for Machine Learning。计划在每周的学习结束后，加以整理和补充，写一篇周总结。这周是以第一周。</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>这一节课主要是介绍。</p>
+<p>首先介绍课程的结构。一共是16周的课程。<br>作业方面。课程使用Octave、matlab来提交作业,这一点和andrew NG的机器学习课是一样的。<br>成绩。final test(25%)+programming assignments(30%)+weekly quizzes(45%)，可以看出更注重平常的训练。</p>
+<h3 id="为什么我们需要机器学习？"><a href="#为什么我们需要机器学习？" class="headerlink" title="为什么我们需要机器学习？"></a>为什么我们需要机器学习？</h3><p>首先，什么是机器学习。</p>
+<p>两个传统编程无法解决的问题：</p>
+<ul>
+<li>在一个杂乱的场景中，去识别一个三维图像。我们不知道人脑是怎么工作的，因此我们很难编程。即使可以编程，也会很复杂。</li>
+<li>计算信用卡交易出错的可能性。</li>
+</ul>
+<p><img src="http://i.imgur.com/Bi1JTjp.png" alt=""></p>
+<p>机器学习是怎么解决这些问题的？</p>
+<p>机器学习通过收集大量的具有“标签”（其实这是监督学习）的例子，然后训练出一个模型。对于新进入的数据，用模型判断它的标签。</p>
+<p>现在，计算资源越来越便宜，因此，机器学习是解决这些问题的好方法。</p>
+<p><img src="http://i.imgur.com/U2k9z6w.png" alt=""></p>
+<p>一些问题用学习的方法能很好的解决</p>
+<ul>
+<li>识别模式</li>
+<li>异常识别</li>
+<li>预测</li>
+</ul>
+<p><img src="http://i.imgur.com/hVBrVnU.png" alt=""></p>
+<p>机器学习的标准例子</p>
+<ul>
+<li>果蝇基因序列学习</li>
+<li>MNIST手写数据识别</li>
+</ul>
+<p>这里使用MNIST手写数据识别例子。<br>数据集：MNIST(手写数字识别，规模小）；ImageNet（1000中不同物体识别，130万张高清图片）。</p>
+<p><img src="http://i.imgur.com/02jtSsg.png" alt=""></p>
+<p>语音识别任务。</p>
+<p>pre-processing预处理（将声波转换为声学系数的向量）；the acoustic model声学模型（使用邻近的几个声学向量预测音节phoneme的可能性）；decoding解码（找到最适合声学数据的音节序列）DNN正在代替原来的机器学习算法用于构建声学模型，显著降低了错误率。</p>
+<p><img src="http://i.imgur.com/ZDz6wi8.png" alt=""></p>
+<p>Hinton在2012年使用8层神经网络使得错误率下降到了20.7%。</p>
+<p><img src="http://i.imgur.com/pdeO1Os.png" alt=""></p>
+<h3 id="什么是神经网络？"><a href="#什么是神经网络？" class="headerlink" title="什么是神经网络？"></a>什么是神经网络？</h3><p>研究神经计算的原因：</p>
+<ul>
+<li>理解神经的实际的工作方式。</li>
+<li>理解神经元并行计算、自适应连接的方式。神经元在处理视觉方面具有优势，在数字计算上不擅长。</li>
+<li>基于神经元结构提出算法，解决实际问题。比如计算机视觉。</li>
+</ul>
+<p><img src="http://i.imgur.com/ySSil9N.png" alt=""></p>
+<p>典型的皮质神经元结构：</p>
+<p>整体结构（轴突产生分支发送信号给其他神经元，树突接收其他神经元的信号）；一个神经元的轴突与另一个神经元的树突进行通信的结构叫做突触，轴突产生刺激使得组织液中的电荷进入到后突触；当足够的电荷流入突触使得细胞膜去极化，这个神经元的轴突上的一些小山丘状结构产生刺激。</p>
+<p><img src="http://i.imgur.com/PAnugwr.png" alt=""></p>
+<ul>
+<li>突触：当轴突产生刺激，到达突触会释放携带化学物质的小泡，有不同的化学物质（积极和消极），化学物质扩散过突触间隙，和接收神经元上的后突触膜的接收分子结合，导致膜发生形变，打开允许特定离子通过的通道，从而使得极性发生变化。</li>
+<li>突触通过改变化学物质囊泡的个数和接收分子的个数进行有效调节，他们很小和低耗能，使用局部信号进行调节。</li>
+<li>模块化：大脑皮层不同的部分做不同的事情，损坏成年人的局部大脑会对其产生特定影响，但是大脑皮层整体看上去又是相似的，如果损坏幼儿的一部分大脑，他的其余部分可能就会分担这部分大脑的工作。</li>
+</ul>
+<h3 id="一些简单的神经元模型"><a href="#一些简单的神经元模型" class="headerlink" title="一些简单的神经元模型"></a>一些简单的神经元模型</h3><p>理想化的神经元为了简化模型，移去类复杂的具体信息。这样也可以方便进行数学计算。一旦理解了基本的思想，就容易增加复杂的部分使得模型更加可信。</p>
+<h5 id="线性神经元"><a href="#线性神经元" class="headerlink" title="线性神经元"></a>线性神经元</h5><p><img src="http://i.imgur.com/TxwSDmv.png" alt=""></p>
+<h5 id="二值阈值神经元"><a href="#二值阈值神经元" class="headerlink" title="二值阈值神经元"></a>二值阈值神经元</h5><p><img src="http://i.imgur.com/fnwzPRh.png" alt=""><br><img src="http://i.imgur.com/cloH9qt.png" alt=""></p>
+<h5 id="修正线性神经元（线性阈值神经元）"><a href="#修正线性神经元（线性阈值神经元）" class="headerlink" title="修正线性神经元（线性阈值神经元）"></a>修正线性神经元（线性阈值神经元）</h5><p><img src="http://i.imgur.com/8ltdSSr.png" alt=""></p>
+<h5 id="sigmoid神经元"><a href="#sigmoid神经元" class="headerlink" title="sigmoid神经元"></a>sigmoid神经元</h5><p>sigmoid函数是一类类似S形的函数。可以讲变量映射到0和1之间。</p>
+<p><img src="http://i.imgur.com/GtoP4mP.png" alt=""></p>
+<h3 id="一个简单的学习例子"><a href="#一个简单的学习例子" class="headerlink" title="一个简单的学习例子"></a>一个简单的学习例子</h3><p>Hinton在这里举了手写数字识别的例子。</p>
+<p>这里用两层神经元来识别数字，输入层为每一个像素点，输出层为10个类别。</p>
+<p><img src="http://i.imgur.com/ZV6OhBU.png" alt=""></p>
+<p>但是两层的神经元并不有效。<br>层数太少，最后选出的类别相当于含有最多覆盖该字符的那个数字。</p>
+<p><img src="http://i.imgur.com/jMO8MKg.png" alt=""></p>
+<h3 id="机器学习的三种形式"><a href="#机器学习的三种形式" class="headerlink" title="机器学习的三种形式"></a>机器学习的三种形式</h3><ul>
+<li>监督学习</li>
+<li>增强学习</li>
+<li>非监督学习</li>
+</ul>
+<h5 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h5><p>监督学习即是有标签的学习。利用一组已知标签的数据训练模型，利用这个模型判断新的数据的标签。</p>
+<p>监督学习分为回归分析和分类，回归的标签是连续的，分类的标签是离散的。</p>
+<p>监督学习通常需要设定一个目标函数，学习的过程即是调整参数使得目标值和真实值更加接近的过程。</p>
+<h5 id="增强学习"><a href="#增强学习" class="headerlink" title="增强学习"></a>增强学习</h5><p>这个概念在课上没听懂。网上找了一下概念：增强学习关注的是智能体如何在环境中采取一系列行为，从而获得最大的累积回报。</p>
+<p>通过增强学习，一个智能体应该知道在什么状态下应该采取什么行为。RL是从环境状态到动作的映射的学习，我们把这个映射称为策略。</p>
+<p>有一个例子： flappy bird 是现在很流行的一款小游戏，不了解的同学可以点链接进去玩一会儿。现在我们让小鸟自行进行游戏，但是我们却没有小鸟的动力学模型，也不打算了解它的动力学。要怎么做呢？ 这时就可以给它设计一个增强学习算法，然后让小鸟不断的进行游戏，如果小鸟撞到柱子了，那就获得-1的回报，否则获得0回报。通过这样的若干次训练，我们最终可以得到一只飞行技能高超的小鸟，它知道在什么情况下采取什么动作来躲避柱子。</p>
+<p>视频地址：<a href="https://www.youtube.com/watch?v=THhUXIhjkCM" target="_blank" rel="external">https://www.youtube.com/watch?v=THhUXIhjkCM</a></p>
+<p>代码地址：<a href="https://github.com/yenchenlin/DeepLearningFlappyBird" target="_blank" rel="external">https://github.com/yenchenlin/DeepLearningFlappyBird</a></p>
+<p>增强学习和监督学习的区别有两点：</p>
+<ul>
+<li>增强学习是试错学习(Trail-and-error)，由于没有直接的指导信息，智能体要以不断与环境进行交互，通过试错的方式来获得最佳策略。</li>
+<li>延迟回报，增强学习的指导信息很少，而且往往是在事后（最后一个状态）才给出的，这就导致了一个问题，就是获得正回报或者负回报以后，如何将回报分配给前面的状态。</li>
+</ul>
+<p>增强学习的典型例子有：马尔科夫决策。</p>
+<h5 id="非监督学习"><a href="#非监督学习" class="headerlink" title="非监督学习"></a>非监督学习</h5><p>一些非监督学习的目标：</p>
+<ul>
+<li>发现输入的好的本质的表示形式。</li>
+<li>提供压缩低维的特征表示（PCA线性压缩）。</li>
+<li>提供输入的经济的高维表示（如Binary features，或接近于0的real-valued features）。</li>
+<li>输入的聚类。</li>
+</ul>
+<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><p>不得不说，Hinton上课有一些口音，上课的重点也没有andrew NG清晰…</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/05/08/jupyter魔法命令/" data-toggle="tooltip" data-placement="top"
+                           title="Jupyter Notebook魔法(Magic)命令小结">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lecture-1-Introduction"><span class="toc-text">Lecture 1: Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写在前面"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么我们需要机器学习？"><span class="toc-text">为什么我们需要机器学习？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是神经网络？"><span class="toc-text">什么是神经网络？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些简单的神经元模型"><span class="toc-text">一些简单的神经元模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#线性神经元"><span class="toc-text">线性神经元</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#二值阈值神经元"><span class="toc-text">二值阈值神经元</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#修正线性神经元（线性阈值神经元）"><span class="toc-text">修正线性神经元（线性阈值神经元）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#sigmoid神经元"><span class="toc-text">sigmoid神经元</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个简单的学习例子"><span class="toc-text">一个简单的学习例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#机器学习的三种形式"><span class="toc-text">机器学习的三种形式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#监督学习"><span class="toc-text">监督学习</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#增强学习"><span class="toc-text">增强学习</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#非监督学习"><span class="toc-text">非监督学习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#感想"><span class="toc-text">感想</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Neural Network"
+                           title="Neural Network">Neural Network</a>
+                        
+                        <a class="tag" href="/tags/#Machine Learning"
+                           title="Machine Learning">Machine Learning</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "ethanw";
+    var disqus_identifier = "https://ethanww.github.io/2017/05/17/Neural Networks for Machine Learning Lecture1笔记/";
+    var disqus_url = "https://ethanww.github.io/2017/05/17/Neural Networks for Machine Learning Lecture1笔记/";
+
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/yu-guan-tou-a">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2956289533">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/ethanww">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ethanw 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://ethanww.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-91532961-1';
+    var _gaDomain = 'ethanww.github.io';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','null','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/assets/img/avatar-default.jpg">
+</body>
+
+</html>
