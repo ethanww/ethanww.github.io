@@ -82,7 +82,7 @@
                         
 							
                         <li>
-                            <a href="/tags/">tags</a>
+                            <a href="/archives/">Archives</a>
                         </li>
 							
 						
@@ -90,7 +90,7 @@
                         
 							
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/tags/">tags</a>
                         </li>
 							
 						
@@ -196,6 +196,10 @@
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
                 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是我的吴恩达机器学习小结第二篇，<strong>主要总结非监督学习的部分，包括聚类，降维，异常检测</strong></p>
 <p>其它两篇链接如下：</p>
+<ul>
+<li><a href="https://ethanww.github.io/2017/05/19/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93_%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/">吴恩达机器学习小结(1)_监督学习</a></li>
+<li><a href="https://ethanww.github.io/2017/05/22/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93_%E5%85%B6%E5%AE%83/">吴恩达机器学习小结(3)_其它</a></li>
+</ul>
 <h2 id="K-means聚类"><a href="#K-means聚类" class="headerlink" title="K-means聚类"></a>K-means聚类</h2><h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><ol>
 <li>随机初始化$K$个聚类中心(cluster centroid) $\mu_1, \mu_2, \ldots, \mu_K$</li>
 <li>类分配: 对于每个数据点$x^{(i)}$，寻找离它最近的聚类中心，将其归入该类；即$c^{(i)}=\min\limits_k||x^{(i)}-\mu_k||^2$，其中$c^{(i)}$表示$x^{(i)}$所在的类</li>
