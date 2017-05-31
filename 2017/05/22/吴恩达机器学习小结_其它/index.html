@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ethanw的小板凳">
+    <meta name="keyword" content="python">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="/assets/img/avatar-default.jpg">
+    <link rel="alternate" type="application/atom+xml" title="Ethanw" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        吴恩达机器学习小结(3)_其它｜Ethanw&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://ethanww.github.io/2017/05/22/吴恩达机器学习小结_其它/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('null')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Ethanw
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/assets/img/post-default.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/assets/img/post-default.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>吴恩达机器学习小结(3)_其它</h1>
+                    
+                    <span class="meta">
+                         作者 ethanw
+                        <span>
+                          日期 2017-05-22
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Machine Learning"
+                           title="Machine Learning">Machine Learning</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            吴恩达机器学习小结(3)_其它
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是我的吴恩达机器学习小结第三篇，<strong>主要总结机器学习应用建议、机器学习系统设计、大规模机器学习部分。</strong></p>
+<p>其它两篇链接如下：</p>
+<h2 id="机器学习应用建议"><a href="#机器学习应用建议" class="headerlink" title="机器学习应用建议"></a>机器学习应用建议</h2><h3 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h3><p>一般来讲，把数据分成三个部分：</p>
+<ul>
+<li>60%数据用作<strong>训练集（Training set）</strong></li>
+<li>20%数据用作<strong>交叉验证集（Cross ValidaDon set， CV set）</strong></li>
+<li>20%数据用作<strong>测试集（Test set）</strong></li>
+</ul>
+<p>训练集的数据用于训练算法得到模型（多个不同的模型），交叉验证集的数据可以用来选择合适的模型（选一个误差最小的），测试集的数据用来评估推广后该模型的准确度。</p>
+<h3 id="偏差和方差"><a href="#偏差和方差" class="headerlink" title="偏差和方差"></a>偏差和方差</h3><p>高偏差（High bias）基本上就是欠拟合，而高方差（High variance）就是过拟合的问题。</p>
+<p>高偏差时，Test和CV上的结果误差都会很大，而高方差时，Test上的误差很小，但CV上的误差很大</p>
+<p><img src="http://7d9rd6.com1.z0.glb.clouddn.com/wp-content/uploads/2016/04/scrn20160416112755.png" alt="scrn20160416112755"></p>
+<p>对于含有regularization的模型，参数$λ$的不当选择也会导致模型出现欠拟合和过拟合。以线性回归为例，如果$λ$选择过大，那么模型会出现欠拟合；反之如果$λ$过小，则容易出现过拟合。</p>
+<p><strong>解决办法</strong>是：通过将数据集划分为训练集/验证集/测试集，然后$λ$取一系列值(0, 0.01, 0.02, 0.04, 0.08…)， 对于每一个$λ$取值用训练集训练参数$θ$，对于得到的每一个模型，在验证集选择使得错误最小的参数$λ$作为模型参数，即$J_{cv}(\theta)$最小。</p>
+<p>更直观的方式，可以做出$J<em>{train}(\theta)$和$J</em>{cv}(\theta)$随$λ$的变化曲线，选择最优的$λ$。</p>
+<p><img src="http://images2015.cnblogs.com/blog/353956/201601/353956-20160104225042403-1499923033.jpg" alt="img"></p>
+<h3 id="学习曲线"><a href="#学习曲线" class="headerlink" title="学习曲线"></a>学习曲线</h3><p>学习曲线是$J<em>{train}(\theta)$和$J</em>{cv}(\theta)$随训练集尺寸的变化曲线，可以用于识别欠拟合和过拟合问题。</p>
+<p>对于<strong>欠拟合</strong>，由于模型过于简单，因而训练错误$J<em>{train}(\theta)$和验证错误$J</em>{cv}(\theta)$均较大，增加训练实例并不能改善这种情况</p>
+<p>对于<strong>过拟合</strong>问题，在训练错误$J<em>{train}(\theta)$非常小而验证错误$J</em>{cv}(\theta)$很大，两者之间有一个非常大的鸿沟(gap)，在这种情况下下增加训练实例很有可能改善算法性能。</p>
+<p><img src="http://images2015.cnblogs.com/blog/353956/201601/353956-20160105204719403-358128731.png" alt="img"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="http://images2015.cnblogs.com/blog/353956/201601/353956-20160105205716856-1826230579.png" alt="img"></p>
+<h2 id="机器学习系统设计"><a href="#机器学习系统设计" class="headerlink" title="机器学习系统设计"></a>机器学习系统设计</h2><h3 id="构建一个机器学习系统的方法"><a href="#构建一个机器学习系统的方法" class="headerlink" title="构建一个机器学习系统的方法"></a>构建一个机器学习系统的方法</h3><p>构建一个学习算法的推荐方法为：</p>
+<ol>
+<li>从一个简单的能快速实现的算法开始，实现该算法并用交叉验证集数据测试这个算法</li>
+<li>绘制学习曲线，决定是增加更多数据，或者添加更多特征，还是其他选择</li>
+<li>进行误差分析：人工检查交叉验证集中我们算法中产生预测误差的实例，看看这些实例是否有某种系统化的趋势</li>
+</ol>
+<p>思考怎样能改进分类器。例如，发现是否缺少某些特征，记下这些特征出现的次数。</p>
+<h3 id="处理偏斜数据-skewed-data"><a href="#处理偏斜数据-skewed-data" class="headerlink" title="处理偏斜数据(skewed data)"></a>处理偏斜数据(skewed data)</h3><p>例子：对于癌症/非癌症的分类问题，假设y=1表示癌症，y=0表示非癌症，因为癌症的人数必然是少数(不妨假设为1%)，那么一个非常naive的算法可以在任何情况下直接返回0，这样表面上该算法的正确率高达99%（因为本来99%的人都是非癌症），然而实际上容易看出，对于癌症患者该算法一个也没有检测出来。如癌症类这样相较于其他类本身的比例与其他类数量差距巨大的类称为<strong>偏斜类(skewed class)</strong>。为了更好的衡量算法在偏斜数据集上的效果，仅仅使用准确率是不够。</p>
+<p>为此引入了<strong>查准率（Precision）</strong>和<strong>查全率（Recall）</strong>的概念。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>实际为1</th>
+<th>实际为0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>预测为1</td>
+<td>正确肯定（True Positive,TP）</td>
+<td>错误肯定（False Positive,FP）</td>
+</tr>
+<tr>
+<td>预测为0</td>
+<td>正确否定（True Negative,TN）</td>
+<td>错误否定（False Negative,FN）</td>
+</tr>
+</tbody>
+</table>
+<p>$$<br>\text{Precision(查准率)} = \frac{\text{True positive}}{\text{Predict positive}} = \frac{\text{True positive}}{\text{True positive} + \text{False positive}}<br>$$</p>
+<p>$$<br>\text{Recall(查全率)} = \frac{\text{True positive}}{\text{Actual positive}} = \frac{\text{True positive}}{\text{True positive} + \text{False negative}}<br>$$</p>
+<p>一般情况下，两者不可兼得</p>
+<p><img src="http://7d9rd6.com1.z0.glb.clouddn.com/wp-content/uploads/2016/04/scrn20160416133702.png" alt="scrn20160416133702"></p>
+<p>为了两者之前取得平衡，定义了F1<br>$$<br>F_1 = \frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision}+\text{Recall}}<br>$$<br>F1值越高越好。</p>
+<h3 id="使用大数据集-large-data-set"><a href="#使用大数据集-large-data-set" class="headerlink" title="使用大数据集(large data set)"></a>使用大数据集(large data set)</h3><p><strong>Q:什么时候应该去获取更多数据，而不是改进算法呢？</strong></p>
+<p><strong>A:</strong>模型具有足够多的特征来预测y值从而避免欠拟合。</p>
+<p>这时，可以在大数据集上进行训练从而避免过拟合（当数据足够多时，模型不太可能出现过拟合）。</p>
+<h2 id="大规模机器学习"><a href="#大规模机器学习" class="headerlink" title="大规模机器学习"></a>大规模机器学习</h2><p>当训练集的规模很大时，可以帮助我们训练出更好的结果。但是，训练集规模的增大也带来了计算的代价非常大。</p>
+<p>可以通过绘制学习曲线来判断大规模的训练集是否有必要。</p>
+<p><img src="http://7d9rd6.com1.z0.glb.clouddn.com/wp-content/uploads/2016/07/scrn20160701151820.png" alt="scrn20160701151820"></p>
+<p><strong>分析</strong>：作图的训练误差很小，但是CV误差很大，说明已经过拟合，这个时候增大训练集可以使模型避免过拟合；对于右图，训练误差和CV误差差不多大，单纯的增加训练集已经不能使误差减小，这个时候可以增加训练的特征，再增加训练集训练。</p>
+<h3 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h3><h4 id="批梯度下降-Batch-Gradient-Descent"><a href="#批梯度下降-Batch-Gradient-Descent" class="headerlink" title="批梯度下降 (Batch Gradient Descent)"></a>批梯度下降 (Batch Gradient Descent)</h4><p>以线性回归为例，用梯度下降算法进行参数更新的公式为<br>$$<br>\theta_j=\theta<em>j-\alpha\frac{1}{m}\sum\limits</em>{i=1}^{m}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)}<br>$$<br>可以看到每次参数更新一次，都需要将整个训练集扫描一遍，所以称为<strong>批梯度下降</strong>，这种更新方式对于参数集很大的集合（例如m=100,000,000）运行速度十分慢，为了加快算法运行速度，提出了随机梯度下降。</p>
+<h4 id="随机梯度下降-Stochastic-Gradient-Descent"><a href="#随机梯度下降-Stochastic-Gradient-Descent" class="headerlink" title="随机梯度下降 (Stochastic Gradient Descent)"></a>随机梯度下降 (Stochastic Gradient Descent)</h4><p>每次仅用一个example来更新参数$θ$，仍以线性回归为例，随机梯度下降算法为</p>
+<ol>
+<li><p>随机重排列整个训练集(shuffle)</p>
+</li>
+<li><p>重复下列过程多次(数据集较大时可以重复1~10次):</p>
+<p>for i = 1, …, m {</p>
+</li>
+</ol>
+<p>$$<br>\theta_j := \theta<em>j – \alpha (h</em>{\theta}(x^{(i)}) – y^{(i)}) x_j^{(i)}<br>$$</p>
+<pre><code>}
+</code></pre><h4 id="小批梯度下降-Mini-Batch-Gradient-Descent"><a href="#小批梯度下降-Mini-Batch-Gradient-Descent" class="headerlink" title="小批梯度下降 (Mini-Batch Gradient Descent)"></a>小批梯度下降 (Mini-Batch Gradient Descent)</h4><p>随机梯度下降只用1个样本进行参数更新，而Mini梯度下降使用b(1&lt;b&lt;m)个样本进行参数更新。</p>
+<p>仍以线性回归为例，假如我们有m=1000个样本，我们可以用每b=10个样本进行参数更新<br>$$<br>\theta_j=\theta<em>j-\alpha\frac{1}{10}\sum\limits</em>{k=i}^{i+9}(h_\theta(x^{(k)})-y^{(k)})x_j^{(k)}<br>$$</p>
+<h4 id="算法收敛性"><a href="#算法收敛性" class="headerlink" title="算法收敛性"></a>算法收敛性</h4><p><strong>怎么判断梯度下降是否在收敛呢？怎么选择学习率α？</strong></p>
+<p><strong>批梯度处理</strong>能够保证算法收敛到最小值(如果选择的学习速率α合适的话），可以plot代价函数J(θ)随迭代次数的曲线，如果曲线是总是下降的，则能够收敛，反之需要调整学习速率。</p>
+<p>在<strong>随机梯度下降</strong>中，每次更新参数前计算代价cost，但画图时，一般选X次迭代的代价平均值。这样可以得到X次迭代的代价均值和X次迭代的次数的图形：</p>
+<p>如果曲线的趋势是下降的，可以判定是正在收敛。</p>
+<p>如果趋势不是下降的，可能需要：</p>
+<ul>
+<li><p>调整增大或者减小平均的example数（将100改为1000或者10等）</p>
+</li>
+<li><p>减小学习率，可以令学习率随着迭代次数增加而减小。例如<br>$$<br>\alpha = \frac{\text{const1}}{\text{iterationNumber + const2}}<br>$$</p>
+</li>
+</ul>
+<h3 id="在线学习-Online-Learning"><a href="#在线学习-Online-Learning" class="headerlink" title="在线学习(Online Learning)"></a>在线学习(Online Learning)</h3><p>之前的算法都是有一个固定的训练集来训练模型，当模型训练好后对未来的样本进行分类、回归等。</p>
+<p>在线学习则不同，它对每个新来的样本进行模型参数更新，因此没有固定的训练集，<strong>参数更新的方式则是采用随机梯度下降。</strong></p>
+<p>在线学习的<strong>优势</strong>是模型参数可以随用户的偏好自适应的进行调整。</p>
+<p>以logistic回归为例，在线学习方式如下:</p>
+<p>Repeat forever {</p>
+<pre><code>1. 获取当前example (x, y)
+2. 使用(x,y)进行参数更新：$\theta_j=\theta_j-\alpha(h_\theta(x)-y)x_j$
+   }
+</code></pre><h3 id="映射化简-Map-Reduce"><a href="#映射化简-Map-Reduce" class="headerlink" title="映射化简(Map Reduce)"></a>映射化简(Map Reduce)</h3><p>数据量很大时，有必要把数据分配给多个计算机计算，最后把各个结果汇总。这叫做<strong>映射化简</strong>。</p>
+<p>例如需要对400个训练实例求和，可以分配4台机器，每台计算100个数据。最后把4个结果合并。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.coursera.org/learn/machine-learning/" target="_blank" rel="external">Andrew Ng机器学习课件</a></li>
+<li><a href="http://www.cnblogs.com/python27/tag/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" target="_blank" rel="external">机器学习公开课笔记</a></li>
+<li><a href="http://www.yalewoo.com/machine_learning/ml_notes" target="_blank" rel="external">雅乐网Andrew Ng机器学习课程笔记</a></li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/05/21/吴恩达机器学习小结_非监督学习/" data-toggle="tooltip" data-placement="top"
+                           title="吴恩达机器学习小结(2)_非监督学习">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#机器学习应用建议"><span class="toc-text">机器学习应用建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模型选择"><span class="toc-text">模型选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#偏差和方差"><span class="toc-text">偏差和方差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习曲线"><span class="toc-text">学习曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#机器学习系统设计"><span class="toc-text">机器学习系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建一个机器学习系统的方法"><span class="toc-text">构建一个机器学习系统的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#处理偏斜数据-skewed-data"><span class="toc-text">处理偏斜数据(skewed data)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用大数据集-large-data-set"><span class="toc-text">使用大数据集(large data set)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大规模机器学习"><span class="toc-text">大规模机器学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#梯度下降"><span class="toc-text">梯度下降</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#批梯度下降-Batch-Gradient-Descent"><span class="toc-text">批梯度下降 (Batch Gradient Descent)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#随机梯度下降-Stochastic-Gradient-Descent"><span class="toc-text">随机梯度下降 (Stochastic Gradient Descent)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小批梯度下降-Mini-Batch-Gradient-Descent"><span class="toc-text">小批梯度下降 (Mini-Batch Gradient Descent)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法收敛性"><span class="toc-text">算法收敛性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在线学习-Online-Learning"><span class="toc-text">在线学习(Online Learning)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#映射化简-Map-Reduce"><span class="toc-text">映射化简(Map Reduce)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Machine Learning"
+                           title="Machine Learning">Machine Learning</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "ethanw";
+    var disqus_identifier = "https://ethanww.github.io/2017/05/22/吴恩达机器学习小结_其它/";
+    var disqus_url = "https://ethanww.github.io/2017/05/22/吴恩达机器学习小结_其它/";
+
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/yu-guan-tou-a">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2956289533">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/ethanww">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ethanw 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://ethanww.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-91532961-1';
+    var _gaDomain = 'ethanww.github.io';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','null','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/assets/img/avatar-default.jpg">
+</body>
+
+</html>

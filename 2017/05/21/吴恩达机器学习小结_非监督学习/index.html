@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ethanw的小板凳">
+    <meta name="keyword" content="python">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="/assets/img/avatar-default.jpg">
+    <link rel="alternate" type="application/atom+xml" title="Ethanw" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        吴恩达机器学习小结(2)_非监督学习｜Ethanw&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://ethanww.github.io/2017/05/21/吴恩达机器学习小结_非监督学习/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('null')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Ethanw
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/assets/img/post-default.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/assets/img/post-default.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>吴恩达机器学习小结(2)_非监督学习</h1>
+                    
+                    <span class="meta">
+                         作者 ethanw
+                        <span>
+                          日期 2017-05-21
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Machine Learning"
+                           title="Machine Learning">Machine Learning</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            吴恩达机器学习小结(2)_非监督学习
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是我的吴恩达机器学习小结第二篇，<strong>主要总结非监督学习的部分，包括聚类，降维，异常检测</strong></p>
+<p>其它两篇链接如下：</p>
+<h2 id="K-means聚类"><a href="#K-means聚类" class="headerlink" title="K-means聚类"></a>K-means聚类</h2><h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><ol>
+<li>随机初始化$K$个聚类中心(cluster centroid) $\mu_1, \mu_2, \ldots, \mu_K$</li>
+<li>类分配: 对于每个数据点$x^{(i)}$，寻找离它最近的聚类中心，将其归入该类；即$c^{(i)}=\min\limits_k||x^{(i)}-\mu_k||^2$，其中$c^{(i)}$表示$x^{(i)}$所在的类</li>
+<li>移动类中心的位置: 更新聚类中心$u_k$的值为所有属于类$k$的数据点的平均值</li>
+<li>重复2、3步直到收敛或者达到最大迭代次数</li>
+</ol>
+<p><img src="http://images2015.cnblogs.com/blog/353956/201601/353956-20160115195940850-639229406.gif" alt="img"></p>
+<h3 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h3><p>用$\mu_{c^{(i)}}$表示第$i$个数据点$x^{(i)}$所在类的中心，则K-Means优化的代价函数为<br>$$<br>J(c^{(1)},\ldots,c^{(m)},\mu_1,\ldots,\mu<em>K)=\frac{1}{m}\sum\limits</em>{i=1}^{m}||x^{(i)}-\mu<em>{c^{(i)}}||^2<br>$$<br>希望找到最优参数使得该函数最小化，即<br>$$<br>\min\limits</em>{\substack{c^{(1)},\ldots,c^{(m)} \ \mu_1,\ldots,\mu_K}}J(c^{(1)},\ldots,c^{(m)},\mu_1,\ldots,\mu_K)<br>$$</p>
+<h3 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h3><p><strong>1.怎么避免局部最优？</strong></p>
+<p>答：算法聚类的性能与初始聚类中心的选择有关，为避免陷入局部最优（如图2所示），应该运行多次（50次）取使得$J$最小的结果</p>
+<p><img src="http://images2015.cnblogs.com/blog/353956/201601/353956-20160115203854272-818923057.png" alt="img"></p>
+<p><strong>2.怎么确定类数量K的值？</strong></p>
+<p>Elbow方法，绘制$J$随$K$的变化曲线，选择下降速度突然变慢的转折点作为$K$值；对于转折不明显的曲线，可根据K-Means算法后续的目标进行选择。</p>
+<p><img src="http://7d9rd6.com1.z0.glb.clouddn.com/wp-content/uploads/2016/05/scrn20160519090845.png" alt="scrn20160519090845"></p>
+<h2 id="PCA降维"><a href="#PCA降维" class="headerlink" title="PCA降维"></a>PCA降维</h2><h3 id="算法步骤-1"><a href="#算法步骤-1" class="headerlink" title="算法步骤"></a>算法步骤</h3><ol>
+<li><p>数据预处理：</p>
+<ul>
+<li><strong>均值化(mean normalization)</strong>：$\mu<em>j = \frac{1}{m}\sum\limits</em>{i=1}^{m}x_j^{(i)}, x_j^{(i)}=x_j-\mu_j$</li>
+<li><strong>特征缩放(feature scaling)</strong>：(可选，不同特征范围差距过大时需要) ， $x_j^{(i)}=\frac{x^{(i)}-\mu_j}{\sigma_j}$</li>
+</ul>
+</li>
+<li><p>计算协方差矩阵(Convariance Matrix)<br>$$<br>\Sigma=\frac{1}{m}\sum\limits_{i=1}^{m}x^{(i)}(x^{(i)})^T \quad \text{or} \quad \Sigma = \frac{1}{m}X^TX<br>$$</p>
+</li>
+<li><p>计算协方差矩阵$Σ$的特征向量$U$</p>
+</li>
+<li><p>选择$U$矩阵的前$k$个列向量作为$k$个主元方向，形成矩阵$U_{reduce}$</p>
+</li>
+<li><p>对于每个原始数据点$x(x\in R^n)$，其降维后的数据点$z(z \in R^k)$为$z=U_{reduce}^T x$</p>
+</li>
+</ol>
+<h3 id="确定K值"><a href="#确定K值" class="headerlink" title="确定K值"></a>确定K值</h3><p>重构数据：对于降维后$k$维数据点$z$，将其恢复$n$维后的近似点为$x<em>{apporx}(\approx x)=U</em>{reduce}z$</p>
+<p><strong>怎么确定k值？</strong></p>
+<p>平均均方误差：<br>$$<br>\frac{1}{m} \sum<em>{i=1}^{m} || x^{(i)} – x</em>{approx}^{(i)} ||^2<br>$$<br>训练集方差：<br>$$<br>\frac{1}{m} \sum<em>{i=1}^{m} || x^{(i)}||^2<br>$$<br>选择最小的k值使得<br>$$<br>\frac{\frac{1}{m}\sum\limits</em>{i=1}^{m}||x^{(i)}-x^{(i)}<em>{approx}||^2}{\frac{1}{m}\sum\limits</em>{i=1}^{m}||x^{(i)}||^2} \leq 0.01(0.05)<br>$$<br>在我的实践中，用到的是选择前k个特征值，使得这些值的和占总特征值和的比大于0.99。</p>
+<h3 id="应用PCA的建议"><a href="#应用PCA的建议" class="headerlink" title="应用PCA的建议"></a>应用PCA的建议</h3><ul>
+<li>用于加速监督式学习：<ul>
+<li>(1) 对于带标签的数据，去掉标签后进行PCA数据降维</li>
+<li>(2)使用降维后的数据进行模型训练</li>
+<li>(3) 对于新的数据点，先PCA降维得到降维后数据，带入模型获得预测值。</li>
+<li><strong>注</strong>：应仅用训练集数据进行PCA降维获取映射$x^{(i)}\rightarrow z^{(i)}$，然后将该映射（PCA选择的主元矩阵$x^{(i)}\rightarrow z^{(i)}$）应用到验证集和测试集</li>
+</ul>
+</li>
+<li><strong>不要用PCA阻止过拟合，用正则化。</strong></li>
+<li>在使用PCA之前，先用原始数据进行模型训练，如果不行，再考虑使用PCA；<strong>而不要上来直接使用PCA。</strong></li>
+</ul>
+<h2 id="异常检测"><a href="#异常检测" class="headerlink" title="异常检测"></a>异常检测</h2><p>异常检测是一种非监督学习算法，用来发现不属于已知的一组数据的异常数据点。</p>
+<p>给定数据集$x<em>{(1)}, x</em>{(2)}, …, x<em>{(m)}$ ，假设这些已有数据是正常（normal）的。现在有一个新的数据$x</em>{test}$ ，我们希望建立模型，来告诉我们这个新数据是正常还是异常的（anomalous）。</p>
+<p>一般采用<strong>密度估计</strong>的方法：</p>
+<p><img src="http://7d9rd6.com1.z0.glb.clouddn.com/wp-content/uploads/2016/06/scrn20160628154431.png" alt="scrn20160628154431"></p>
+<p>红色是已有的正常数据点，根据它们的分布，<strong>蓝色圈越靠近中心，密度越大。越偏离中心，数据异常的可能也越大。</strong>表达式如下：<br>$$<br>\text{if}  p(x) = \begin{cases}<br>\le \epsilon, &amp; \text{anomaly} \ </p>
+<blockquote>
+<p>\epsilon, &amp; \text{normal} \<br>\end{cases}<br>$$<br><strong>异常检测的应用：</strong></p>
+</blockquote>
+<ul>
+<li>欺诈检测(Fraud detection)</li>
+<li>制造业(Manufacturing)</li>
+<li>数据中心监视电脑(Monitering computers in data center)</li>
+</ul>
+<h3 id="算法步骤-2"><a href="#算法步骤-2" class="headerlink" title="算法步骤"></a>算法步骤</h3><p>对于训练数据集${x^{(1)}, x^{(2)}, \ldots, x^{(m)}}$，其中数据点$x^{(i)}\in R^n$并假设每个特征均服从高斯分布，即$x^{(i)}_j \sim N(\mu, \sigma^2)$，可如下建立模型$p(x)$<br>$$<br>\begin{align<em>}p(x)&amp;=p(x_1; \mu_1, \sigma_1^2)p(x_2; \mu_2, \sigma_2^2)\ldots p(x_n; \mu_n, \sigma<em>n^2) \ &amp;= \prod\limits</em>{j=1}^n p(x_j; \mu_j, \sigma_j^2)\end{align</em>}<br>$$<br><strong>算法步骤：</strong></p>
+<ol>
+<li>特征选择：选择能够指示异常行为的特征</li>
+<li>参数估计：用训练数据集估计每个特征的整体均值$\mu_j$和方差$\sigma_j^2$，即$\mu<em>j = \frac{1}{m}\sum\limits</em>{i=1}^{m}x^{(i)}_j$，$\sigma^2<em>j=\frac{1}{m}\sum\limits</em>{i=1}^{m}(x^{(i)}_j-\mu_j)^2$<ul>
+<li>这里需要注意的是，在统计学中，$\sigma^2$的系数为$\frac{1}{m-1}$，而在机器学习中习惯使用$\frac{1}{m-1}$，机器学习中要求没有那么精确</li>
+</ul>
+</li>
+<li>用估计得到的参数$\mu_1, \mu_2, \ldots, \mu_n$，$\sigma^2_1, \sigma^2_2, \ldots, \sigma^2_n$建立模型$p(x)$</li>
+<li>对于给定新的数据点$x<em>{new}$, 计算$p(x</em>{new})$；如果$p(x_{new})&lt;\epsilon$则发生异常，否则正常。</li>
+</ol>
+<h3 id="算法细节"><a href="#算法细节" class="headerlink" title="算法细节"></a>算法细节</h3><p>我们在实现异常检测算法时，有两个问题：</p>
+<ul>
+<li><strong>如何划分样本集</strong>？</li>
+<li><strong>如何选择阈值$ϵ$的值</strong>？</li>
+</ul>
+<p>举个栗子，有10000个正常数据，20个异常数据。可以如下划分：</p>
+<ul>
+<li>6000个正常数据作为训练集</li>
+<li>2000个正常数据和10个异常数据作为交叉检验集</li>
+<li>2000个正常数据和10个异常数据作为测试集</li>
+</ul>
+<p>根据训练集可以得到高斯分布的参数，然后根据交叉检验集运行函数，并得到结果。根据查准率、查全率或F1-score来选择阈值$ϵ$的值。</p>
+<p>最后选出阈值后，在测试集上运行，计算系统的查准率、查全率和F1-score。</p>
+<h3 id="和监督学习方法的对比"><a href="#和监督学习方法的对比" class="headerlink" title="和监督学习方法的对比"></a>和监督学习方法的对比</h3><table>
+<thead>
+<tr>
+<th>异常检测</th>
+<th>监督学习</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据中正常数据y=0很多异常数据y=1很少</td>
+<td>数据中y=0和y=1的数据都很多</td>
+</tr>
+<tr>
+<td>异常的种类很多，有限的样本不能获得异常的全部特征</td>
+<td>有足够多的样本用于训练</td>
+</tr>
+<tr>
+<td>未来的异常可能和已有的异常不同</td>
+<td>未来的异常和已有的异常数据特征相似</td>
+</tr>
+<tr>
+<td>例子：1. 欺诈行为检测2. 飞机引擎是否故障3. 数据中心计算机是否正常</td>
+<td>例子1. 垃圾邮件判定2. 天气预报3. 肿瘤分类</td>
+</tr>
+</tbody>
+</table>
+<h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><p>选择的特征需要近似服从于高斯分布，<strong>如果明显不服从高斯分布，可以做适当的转换</strong>，例如$log(x), log(x+c), \sqrt{x}, x^{1/3}$等。</p>
+<p><img src="http://7d9rd6.com1.z0.glb.clouddn.com/wp-content/uploads/2016/06/scrn20160628163546.png" alt="scrn20160628163546"></p>
+<p>另外，上述模型仅当特征AB相互独立时才有$P(AB)=P(A)P(B)$。</p>
+<p><strong>当各个特征之间存在依赖时，一元高斯模型不能很好的刻画$p(x)$，需要使用多元高斯模型。</strong></p>
+<p>多元高斯模型$p(x)$的建立不再是各个概率相乘，而直接用多元高斯分布进行刻画<br>$$<br>p(x;\mu, \Sigma)=\frac{1}{(2\pi)^{n/2}|\Sigma|^{1/2}}\exp\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right)<br>$$<br>例如下图中，如果x1和x2单独分开来看，左上方绿色的点都不属于异常。但是如果x1和x2一起看，相比红色的点，就属于异常了。</p>
+<p><img src="http://7d9rd6.com1.z0.glb.clouddn.com/wp-content/uploads/2016/06/scrn20160629095224.png" alt="scrn20160629095224"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.coursera.org/learn/machine-learning/" target="_blank" rel="external">Andrew Ng机器学习课件</a></li>
+<li><a href="http://www.cnblogs.com/python27/tag/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" target="_blank" rel="external">机器学习公开课笔记</a></li>
+<li><a href="http://www.yalewoo.com/machine_learning/ml_notes" target="_blank" rel="external">雅乐网Andrew Ng机器学习课程笔记</a></li>
+</ul>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2017/05/22/吴恩达机器学习小结_其它/" data-toggle="tooltip" data-placement="top"
+                           title="吴恩达机器学习小结(3)_其它">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/05/19/吴恩达机器学习小结_监督学习/" data-toggle="tooltip" data-placement="top"
+                           title="吴恩达机器学习小结(1)_监督学习">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#K-means聚类"><span class="toc-text">K-means聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法步骤"><span class="toc-text">算法步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化目标"><span class="toc-text">优化目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#细节"><span class="toc-text">细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PCA降维"><span class="toc-text">PCA降维</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法步骤-1"><span class="toc-text">算法步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#确定K值"><span class="toc-text">确定K值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用PCA的建议"><span class="toc-text">应用PCA的建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常检测"><span class="toc-text">异常检测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法步骤-2"><span class="toc-text">算法步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法细节"><span class="toc-text">算法细节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#和监督学习方法的对比"><span class="toc-text">和监督学习方法的对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特征选择"><span class="toc-text">特征选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Machine Learning"
+                           title="Machine Learning">Machine Learning</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "ethanw";
+    var disqus_identifier = "https://ethanww.github.io/2017/05/21/吴恩达机器学习小结_非监督学习/";
+    var disqus_url = "https://ethanww.github.io/2017/05/21/吴恩达机器学习小结_非监督学习/";
+
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/yu-guan-tou-a">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2956289533">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/ethanww">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ethanw 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://ethanww.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-91532961-1';
+    var _gaDomain = 'ethanww.github.io';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','null','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/assets/img/avatar-default.jpg">
+</body>
+
+</html>
