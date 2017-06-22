@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ethanw的小板凳">
+    <meta name="keyword" content="python">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="/assets/img/avatar-default.jpg">
+    <link rel="alternate" type="application/atom+xml" title="Ethanw" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        集体智慧编程笔记1_提供推荐｜Ethanw&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://ethanww.github.io/2017/06/18/2.提供推荐/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('null')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Ethanw
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+							
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/tags/">tags</a>
+                        </li>
+							
+						
+                    
+                        
+							
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+							
+						
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="/assets/img/post-default.jpg">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('/assets/img/post-default.jpg')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>集体智慧编程笔记1_提供推荐</h1>
+                    
+                    <span class="meta">
+                         作者 ethanw
+                        <span>
+                          日期 2017-06-18
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#集体智慧编程"
+                           title="集体智慧编程">集体智慧编程</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            集体智慧编程笔记1_提供推荐
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>最近在学习集体智慧编程，用jupyter notebook写了一遍代码，并做简单的记录。</p>
+<p>欢迎点击<a href="https://github.com/ethanww/Programming-Collective-Intelligence-Chinese" target="_blank" rel="external">这里</a> 访问本文的github仓库: )</p>
+<h2 id="协作型过滤"><a href="#协作型过滤" class="headerlink" title="协作型过滤"></a>协作型过滤</h2><p>通常的做法是对一大群人进行搜索，找出与我们品味相近的一群人</p>
+<h2 id="搜集偏好"><a href="#搜集偏好" class="headerlink" title="搜集偏好"></a>搜集偏好</h2><p>我们用<strong>嵌套的字典</strong>表示不同人及其偏好的方法</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">critics=&#123;<span class="string">'Lisa Rose'</span>: &#123;<span class="string">'Lady in the Water'</span>: <span class="number">2.5</span>, <span class="string">'Snakes on a Plane'</span>: <span class="number">3.5</span>,</div><div class="line"> <span class="string">'Just My Luck'</span>: <span class="number">3.0</span>, <span class="string">'Superman Returns'</span>: <span class="number">3.5</span>, <span class="string">'You, Me and Dupree'</span>: <span class="number">2.5</span>, </div><div class="line"> <span class="string">'The Night Listener'</span>: <span class="number">3.0</span>&#125;,</div><div class="line"><span class="string">'Gene Seymour'</span>: &#123;<span class="string">'Lady in the Water'</span>: <span class="number">3.0</span>, <span class="string">'Snakes on a Plane'</span>: <span class="number">3.5</span>, </div><div class="line"> <span class="string">'Just My Luck'</span>: <span class="number">1.5</span>, <span class="string">'Superman Returns'</span>: <span class="number">5.0</span>, <span class="string">'The Night Listener'</span>: <span class="number">3.0</span>, </div><div class="line"> <span class="string">'You, Me and Dupree'</span>: <span class="number">3.5</span>&#125;, </div><div class="line"><span class="string">'Michael Phillips'</span>: &#123;<span class="string">'Lady in the Water'</span>: <span class="number">2.5</span>, <span class="string">'Snakes on a Plane'</span>: <span class="number">3.0</span>,</div><div class="line"> <span class="string">'Superman Returns'</span>: <span class="number">3.5</span>, <span class="string">'The Night Listener'</span>: <span class="number">4.0</span>&#125;,</div><div class="line"><span class="string">'Claudia Puig'</span>: &#123;<span class="string">'Snakes on a Plane'</span>: <span class="number">3.5</span>, <span class="string">'Just My Luck'</span>: <span class="number">3.0</span>,</div><div class="line"> <span class="string">'The Night Listener'</span>: <span class="number">4.5</span>, <span class="string">'Superman Returns'</span>: <span class="number">4.0</span>, </div><div class="line"> <span class="string">'You, Me and Dupree'</span>: <span class="number">2.5</span>&#125;,</div><div class="line"><span class="string">'Mick LaSalle'</span>: &#123;<span class="string">'Lady in the Water'</span>: <span class="number">3.0</span>, <span class="string">'Snakes on a Plane'</span>: <span class="number">4.0</span>, </div><div class="line"> <span class="string">'Just My Luck'</span>: <span class="number">2.0</span>, <span class="string">'Superman Returns'</span>: <span class="number">3.0</span>, <span class="string">'The Night Listener'</span>: <span class="number">3.0</span>,</div><div class="line"> <span class="string">'You, Me and Dupree'</span>: <span class="number">2.0</span>&#125;, </div><div class="line"><span class="string">'Jack Matthews'</span>: &#123;<span class="string">'Lady in the Water'</span>: <span class="number">3.0</span>, <span class="string">'Snakes on a Plane'</span>: <span class="number">4.0</span>,</div><div class="line"> <span class="string">'The Night Listener'</span>: <span class="number">3.0</span>, <span class="string">'Superman Returns'</span>: <span class="number">5.0</span>, <span class="string">'You, Me and Dupree'</span>: <span class="number">3.5</span>&#125;,</div><div class="line"><span class="string">'Toby'</span>: &#123;<span class="string">'Snakes on a Plane'</span>:<span class="number">4.5</span>,<span class="string">'You, Me and Dupree'</span>:<span class="number">1.0</span>,<span class="string">'Superman Returns'</span>:<span class="number">4.0</span>&#125;&#125;</div></pre></td></tr></table></figure>
+<p>可以很容易的对字典进行查询和修改</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">critics[<span class="string">'Lisa Rose'</span>][<span class="string">'Lady in the Water'</span>]</div></pre></td></tr></table></figure>
+<pre><code>2.5
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">critics[<span class="string">'Toby'</span>]</div></pre></td></tr></table></figure>
+<pre><code>{&apos;Snakes on a Plane&apos;: 4.5, &apos;Superman Returns&apos;: 4.0, &apos;You, Me and Dupree&apos;: 1.0}
+</code></pre><h2 id="寻找相近的用户"><a href="#寻找相近的用户" class="headerlink" title="寻找相近的用户"></a>寻找相近的用户</h2><p>我们需要一种方法来确定人们在品味方面的相似度。</p>
+<p>我们可以将每个人与其它人进行对比，计算他们的相似度评价值。</p>
+<p>这可以通过很多种方式，这里介绍两种：</p>
+<ul>
+<li>欧几里得距离</li>
+<li>皮尔逊相关度</li>
+</ul>
+<h3 id="欧几里得距离"><a href="#欧几里得距离" class="headerlink" title="欧几里得距离"></a>欧几里得距离</h3><p>具体的解释可以参见<a href="https://www.wikiwand.com/zh-hans/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E8%B7%9D%E7%A6%BB" target="_blank" rel="external">维基百科</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</div><div class="line"></div><div class="line"><span class="comment"># 返回一个有关person1和person2的基于距离的相似度评价</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sim_distance</span><span class="params">(prefs,person1,person2)</span>:</span></div><div class="line">    si=&#123;&#125;</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> prefs[person1]: </div><div class="line">        <span class="keyword">if</span> item <span class="keyword">in</span> prefs[person2]: si[item]=<span class="number">1</span></div><div class="line"></div><div class="line">    <span class="comment"># 如果两者没有共同之处，返回0</span></div><div class="line">    <span class="keyword">if</span> len(si)==<span class="number">0</span>: </div><div class="line">        <span class="keyword">return</span> <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="comment"># 计算所有差值的平方和</span></div><div class="line">    sum_of_squares=sum([pow(prefs[person1][item]-prefs[person2][item],<span class="number">2</span>) <span class="keyword">for</span> item <span class="keyword">in</span> prefs[person1] <span class="keyword">if</span> item <span class="keyword">in</span> prefs[person2]])</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>/(<span class="number">1</span>+sum_of_squares)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">sim_distance(critics,<span class="string">'Lisa Rose'</span>,<span class="string">'Gene Seymour'</span>)</div></pre></td></tr></table></figure>
+<pre><code>0.14814814814814814
+</code></pre><h3 id="皮尔逊相关度"><a href="#皮尔逊相关度" class="headerlink" title="皮尔逊相关度"></a>皮尔逊相关度</h3><p>是判断数据与某一直线拟合程度的度量。在数据不是很规范（例如，影评者对影片的评价总是相对平均水平偏差很大），会倾向于给出更号的结果</p>
+<p><img src="https://sfault-image.b0.upaiyun.com/91/40/91408e2911e430ab46edbc49b343d7b9_articlex" alt=""></p>
+<p>具体可以参加<a href="https://www.wikiwand.com/zh-hans/%E7%9A%AE%E5%B0%94%E9%80%8A%E7%A7%AF%E7%9F%A9%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0" target="_blank" rel="external">维基百科</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sim_pearson</span><span class="params">(prefs,p1,p2)</span>:</span></div><div class="line">    <span class="comment"># 得到双方都评价过的列表</span></div><div class="line">    si=&#123;&#125;</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> prefs[p1]: </div><div class="line">        <span class="keyword">if</span> item <span class="keyword">in</span> prefs[p2]: si[item]=<span class="number">1</span></div><div class="line"></div><div class="line">    <span class="comment">#  如果两者列表的没有共同之处，返回1</span></div><div class="line">    <span class="keyword">if</span> len(si)==<span class="number">0</span>: </div><div class="line">        <span class="keyword">return</span> <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="comment"># 得到列表相同之处</span></div><div class="line">    n=len(si)</div><div class="line">  </div><div class="line">    <span class="comment"># 对所有偏好求和</span></div><div class="line">    sum1=sum([prefs[p1][it] <span class="keyword">for</span> it <span class="keyword">in</span> si])</div><div class="line">    sum2=sum([prefs[p2][it] <span class="keyword">for</span> it <span class="keyword">in</span> si])</div><div class="line">  </div><div class="line">    <span class="comment"># 求平方和</span></div><div class="line">    sum1Sq=sum([pow(prefs[p1][it],<span class="number">2</span>) <span class="keyword">for</span> it <span class="keyword">in</span> si])</div><div class="line">    sum2Sq=sum([pow(prefs[p2][it],<span class="number">2</span>) <span class="keyword">for</span> it <span class="keyword">in</span> si])	</div><div class="line">  </div><div class="line">    <span class="comment"># 乘积之和</span></div><div class="line">    pSum=sum([prefs[p1][it]*prefs[p2][it] <span class="keyword">for</span> it <span class="keyword">in</span> si])</div><div class="line">  </div><div class="line">    <span class="comment"># 计算皮尔逊值</span></div><div class="line">    num=pSum-(sum1*sum2/n)</div><div class="line">    den=sqrt((sum1Sq-pow(sum1,<span class="number">2</span>)/n)*(sum2Sq-pow(sum2,<span class="number">2</span>)/n))</div><div class="line">    <span class="keyword">if</span> den==<span class="number">0</span>: </div><div class="line">        <span class="keyword">return</span> <span class="number">0</span></div><div class="line"></div><div class="line">    r=num/den</div><div class="line"></div><div class="line">    <span class="keyword">return</span> r</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">sim_pearson(critics,<span class="string">'Lisa Rose'</span>,<span class="string">'Gene Seymour'</span>)</div></pre></td></tr></table></figure>
+<pre><code>0.39605901719066977
+</code></pre><h2 id="为评论者打分"><a href="#为评论者打分" class="headerlink" title="为评论者打分"></a>为评论者打分</h2><p>找出与指定人员最相近的n个人</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">topMatches</span><span class="params">(prefs,person,n=<span class="number">5</span>,similarity=sim_pearson)</span>:</span></div><div class="line">  scores=[(similarity(prefs,person,other),other) </div><div class="line">                  <span class="keyword">for</span> other <span class="keyword">in</span> prefs <span class="keyword">if</span> other!=person]</div><div class="line">  scores.sort()</div><div class="line">  scores.reverse()</div><div class="line">  <span class="keyword">return</span> scores[<span class="number">0</span>:n]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">topMatches(critics,<span class="string">'Lisa Rose'</span>,n=<span class="number">3</span>)</div></pre></td></tr></table></figure>
+<pre><code>[(0.9912407071619299, &apos;Toby&apos;),
+ (0.7470178808339965, &apos;Jack Matthews&apos;),
+ (0.5940885257860044, &apos;Mick LaSalle&apos;)]
+</code></pre><h2 id="推荐物品"><a href="#推荐物品" class="headerlink" title="推荐物品"></a>推荐物品</h2><p>一般情况下，我们不是要得到趣味相投的影评者，而是要得到一份影片的推荐。</p>
+<p>我们通过一个经过加权的评价值来对影片打分。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getRecommendations</span><span class="params">(prefs,person,similarity=sim_pearson)</span>:</span></div><div class="line">    totals=&#123;&#125;</div><div class="line">    simSums=&#123;&#125;</div><div class="line">    <span class="keyword">for</span> other <span class="keyword">in</span> prefs:</div><div class="line">    <span class="comment"># 不和自己做比较</span></div><div class="line">        <span class="keyword">if</span> other==person: </div><div class="line">            <span class="keyword">continue</span></div><div class="line">        sim=similarity(prefs,person,other)</div><div class="line"></div><div class="line">    <span class="comment"># 忽略评价值为零或者小与零的情况</span></div><div class="line">        <span class="keyword">if</span> sim&lt;=<span class="number">0</span>: </div><div class="line">            <span class="keyword">continue</span></div><div class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> prefs[other]:</div><div class="line">            <span class="keyword">if</span> item <span class="keyword">not</span> <span class="keyword">in</span> prefs[person] <span class="keyword">or</span> prefs[person][item]==<span class="number">0</span>:</div><div class="line">                <span class="comment"># 相似度乘以评分</span></div><div class="line">                totals.setdefault(item , <span class="number">0</span>)</div><div class="line">                totals[item]+=prefs[other][item]*sim</div><div class="line">                <span class="comment"># 相似度之和</span></div><div class="line">                simSums.setdefault(item,<span class="number">0</span>)</div><div class="line">                simSums[item]+=sim</div><div class="line"></div><div class="line">    rankings=[(total/simSums[item],item) <span class="keyword">for</span> item,total <span class="keyword">in</span> totals.items()]</div><div class="line"></div><div class="line">    rankings.sort()</div><div class="line">    rankings.reverse()</div><div class="line">    <span class="keyword">return</span> rankings</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">getRecommendations(critics,<span class="string">'Toby'</span>)</div></pre></td></tr></table></figure>
+<pre><code>[(3.3477895267131013, &apos;The Night Listener&apos;),
+ (2.8325499182641614, &apos;Lady in the Water&apos;),
+ (2.5309807037655645, &apos;Just My Luck&apos;)]
+</code></pre><h2 id="匹配商品"><a href="#匹配商品" class="headerlink" title="匹配商品"></a>匹配商品</h2><p>我们能不能知道哪些商品是彼此接近的？</p>
+<p>和之前人与人的相似度度量方法类似，只要将人员和物品相互调换就行了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">transformPrefs</span><span class="params">(prefs)</span>:</span></div><div class="line">    result=&#123;&#125;</div><div class="line">    <span class="keyword">for</span> person <span class="keyword">in</span> prefs:</div><div class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> prefs[person]:</div><div class="line">            result.setdefault(item,&#123;&#125;)</div><div class="line">      </div><div class="line">             <span class="comment"># 调换物品和人</span></div><div class="line">            result[item][person]=prefs[person][item]</div><div class="line">    <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">movies=transformPrefs(critics)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">topMatches(movies,<span class="string">'Superman Returns'</span>)</div></pre></td></tr></table></figure>
+<pre><code>[(0.6579516949597695, &apos;You, Me and Dupree&apos;),
+ (0.4879500364742689, &apos;Lady in the Water&apos;),
+ (0.11180339887498941, &apos;Snakes on a Plane&apos;),
+ (-0.1798471947990544, &apos;The Night Listener&apos;),
+ (-0.42289003161103106, &apos;Just My Luck&apos;)]
+</code></pre><p>我们还可以通过影片推荐评论者</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">getRecommendations(movies,<span class="string">'Just My Luck'</span>)</div></pre></td></tr></table></figure>
+<pre><code>[(4.0, &apos;Michael Phillips&apos;), (3.0, &apos;Jack Matthews&apos;)]
+</code></pre><h2 id="基于物品的过滤"><a href="#基于物品的过滤" class="headerlink" title="基于物品的过滤"></a>基于物品的过滤</h2><p>对于大型的网站，将一个用户和其它所有用户进行比较，速度太慢了。这是无法忍受的。</p>
+<p>我们可以采用<strong>基于物品的过滤</strong>方式。</p>
+<p>其具体的思想是：</p>
+<ul>
+<li>为每件物品预先计算好最近的其它物品</li>
+<li>如果想为用户A推荐时，找出其好评的电影，比如说10部。</li>
+<li>找出这10部电影的相似电影，通过评分和相似度相乘的和，再处于相似度的和，这样来找出”最可能喜欢”的电影</li>
+</ul>
+<p>它的不同之处在于：<strong>物品间的比较不会像用户比较那么频繁</strong></p>
+<h2 id="构造物品比较数据集"><a href="#构造物品比较数据集" class="headerlink" title="构造物品比较数据集"></a>构造物品比较数据集</h2><p>首先编写一个函数，包含相似物品的完整数据集</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calculateSimilarItems</span><span class="params">(prefs,n=<span class="number">10</span>)</span>:</span></div><div class="line">    <span class="comment"># 建立字典，给出这些物品所有相近的其他物品</span></div><div class="line">    result=&#123;&#125;</div><div class="line"></div><div class="line">    itemPrefs=transformPrefs(prefs)</div><div class="line">    c=<span class="number">0</span></div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> itemPrefs:</div><div class="line">    <span class="comment"># 针对大数据量更新状态</span></div><div class="line">        c+=<span class="number">1</span></div><div class="line">        <span class="keyword">if</span> c%<span class="number">100</span>==<span class="number">0</span>: </div><div class="line">            print(<span class="string">"%d / %d"</span> % (c,len(itemPrefs)))</div><div class="line">        <span class="comment"># 寻找最为相近的物品</span></div><div class="line">        scores=topMatches(itemPrefs,item,n=n,similarity=sim_distance)</div><div class="line">        result[item]=scores</div><div class="line">    <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">itemsim=calculateSimilarItems(critics)</div></pre></td></tr></table></figure>
+<h2 id="获得推荐"><a href="#获得推荐" class="headerlink" title="获得推荐"></a>获得推荐</h2><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getRecommendedItems</span><span class="params">(prefs,itemMatch,user)</span>:</span></div><div class="line">    userRatings=prefs[user]</div><div class="line">    scores=&#123;&#125;</div><div class="line">    totalSim=&#123;&#125;</div><div class="line">    <span class="comment"># 循环遍历由当前用户评分的物品</span></div><div class="line">    <span class="keyword">for</span> (item,rating) <span class="keyword">in</span> userRatings.items( ):</div><div class="line"></div><div class="line">        <span class="comment"># 循环遍历与当前物品相近的物品</span></div><div class="line">        <span class="keyword">for</span> (similarity,item2) <span class="keyword">in</span> itemMatch[item]:</div><div class="line"></div><div class="line">            <span class="keyword">if</span> item2 <span class="keyword">in</span> userRatings: <span class="keyword">continue</span></div><div class="line">            <span class="comment"># 评价值和相似度加权</span></div><div class="line">            scores.setdefault(item2,<span class="number">0</span>)</div><div class="line">            scores[item2]+=similarity*rating</div><div class="line">            <span class="comment"># 全部相似度之和</span></div><div class="line">            totalSim.setdefault(item2,<span class="number">0</span>)</div><div class="line">            totalSim[item2]+=similarity</div><div class="line"></div><div class="line">    <span class="comment"># 将每个合计值除以加权值，求出平均值</span></div><div class="line">    rankings=[(score/totalSim[item],item) <span class="keyword">for</span> item,score <span class="keyword">in</span> scores.items( )]</div><div class="line"></div><div class="line">    <span class="comment"># 排序</span></div><div class="line">    rankings.sort( )</div><div class="line">    rankings.reverse( )</div><div class="line">    <span class="keyword">return</span> rankings</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">getRecommendedItems(critics,itemsim,<span class="string">'Toby'</span>)</div></pre></td></tr></table></figure>
+<pre><code>[(3.1826347305389224, &apos;The Night Listener&apos;),
+ (2.5983318700614575, &apos;Just My Luck&apos;),
+ (2.4730878186968837, &apos;Lady in the Water&apos;)]
+</code></pre><h2 id="使用MovieLens数据集"><a href="#使用MovieLens数据集" class="headerlink" title="使用MovieLens数据集"></a>使用MovieLens数据集</h2><p>这里使用明尼苏达大学的涉及电影评价的真实数据集</p>
+<p>下载地址：<a href="http://files.grouplens.org/datasets/movielens/ml-100k.zip" target="_blank" rel="external">ml-100k.zip</a></p>
+<p>100,000 ratings from 1000 users on 1700 movies</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadMovieLens</span><span class="params">(path=<span class="string">'data'</span>)</span>:</span></div><div class="line">    <span class="comment"># 获取影片标题</span></div><div class="line">    movies=&#123;&#125;</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> open(path+<span class="string">'/u.item'</span>):</div><div class="line">        (id,title)=line.split(<span class="string">'|'</span>)[<span class="number">0</span>:<span class="number">2</span>]</div><div class="line">        movies[id]=title</div><div class="line">  </div><div class="line">    <span class="comment"># 加载数据</span></div><div class="line">    prefs=&#123;&#125;</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> open(path+<span class="string">'/u.data'</span>):</div><div class="line">        (user,movieid,rating,ts)=line.split(<span class="string">'\t'</span>)</div><div class="line">        prefs.setdefault(user,&#123;&#125;)</div><div class="line">        prefs[user][movies[movieid]]=float(rating)</div><div class="line">    <span class="keyword">return</span> prefs</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">prefs=loadMovieLens()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">prefs[<span class="string">'87'</span>]</div></pre></td></tr></table></figure>
+<pre><code>{&apos;2001: A Space Odyssey (1968)&apos;: 5.0,
+ &apos;Ace Ventura: Pet Detective (1994)&apos;: 4.0,
+ &apos;Addams Family Values (1993)&apos;: 2.0,
+ &apos;Addicted to Love (1997)&apos;: 4.0,
+ &apos;Adventures of Priscilla, Queen of the Desert, The (1994)&apos;: 3.0,
+ &apos;Adventures of Robin Hood, The (1938)&apos;: 5.0,
+ &apos;Air Force One (1997)&apos;: 3.0,
+ &apos;Air Up There, The (1994)&apos;: 3.0,
+ &apos;Alien (1979)&apos;: 4.0,
+ &apos;American President, The (1995)&apos;: 5.0,
+ &apos;Annie Hall (1977)&apos;: 4.0,
+ &apos;Apocalypse Now (1979)&apos;: 4.0,
+ &apos;Babe (1995)&apos;: 5.0,
+ &apos;Baby-Sitters Club, The (1995)&apos;: 2.0,
+ &apos;Back to the Future (1985)&apos;: 5.0,
+ &apos;Bad Boys (1995)&apos;: 4.0,
+ &apos;Bananas (1971)&apos;: 5.0,
+ &apos;Barcelona (1994)&apos;: 3.0,
+ &apos;Batman &amp; Robin (1997)&apos;: 4.0,
+ &apos;Batman (1989)&apos;: 3.0,
+ &apos;Batman Returns (1992)&apos;: 3.0,
+ &apos;Big Green, The (1995)&apos;: 3.0,
+ &apos;Big Squeeze, The (1996)&apos;: 2.0,
+ &apos;Birdcage, The (1996)&apos;: 4.0,
+ &apos;Blade Runner (1982)&apos;: 4.0,
+ &apos;Blues Brothers, The (1980)&apos;: 5.0,
+ &apos;Boomerang (1992)&apos;: 3.0,
+ &apos;Boot, Das (1981)&apos;: 4.0,
+ &apos;Brady Bunch Movie, The (1995)&apos;: 2.0,
+ &apos;Braveheart (1995)&apos;: 4.0,
+ &apos;Bridge on the River Kwai, The (1957)&apos;: 5.0,
+ &apos;Broken Arrow (1996)&apos;: 3.0,
+ &apos;Butch Cassidy and the Sundance Kid (1969)&apos;: 5.0,
+ &apos;Citizen Kane (1941)&apos;: 4.0,
+ &quot;City Slickers II: The Legend of Curly&apos;s Gold (1994)&quot;: 3.0,
+ &apos;Clear and Present Danger (1994)&apos;: 5.0,
+ &apos;Cliffhanger (1993)&apos;: 3.0,
+ &apos;Clockwork Orange, A (1971)&apos;: 4.0,
+ &apos;Clueless (1995)&apos;: 4.0,
+ &apos;Con Air (1997)&apos;: 4.0,
+ &apos;Conan the Barbarian (1981)&apos;: 3.0,
+ &apos;Coneheads (1993)&apos;: 4.0,
+ &apos;Cool Hand Luke (1967)&apos;: 5.0,
+ &apos;Cops and Robbersons (1994)&apos;: 3.0,
+ &apos;Cowboy Way, The (1994)&apos;: 3.0,
+ &apos;Crow, The (1994)&apos;: 3.0,
+ &apos;Dances with Wolves (1990)&apos;: 5.0,
+ &quot;Dante&apos;s Peak (1997)&quot;: 3.0,
+ &apos;Dave (1993)&apos;: 4.0,
+ &apos;Days of Thunder (1990)&apos;: 5.0,
+ &apos;Dead Man Walking (1995)&apos;: 4.0,
+ &apos;Dead Poets Society (1989)&apos;: 5.0,
+ &apos;Deer Hunter, The (1978)&apos;: 3.0,
+ &apos;Demolition Man (1993)&apos;: 3.0,
+ &apos;Desperado (1995)&apos;: 3.0,
+ &apos;Die Hard (1988)&apos;: 4.0,
+ &apos;Die Hard: With a Vengeance (1995)&apos;: 4.0,
+ &apos;Down Periscope (1996)&apos;: 4.0,
+ &apos;Dragonheart (1996)&apos;: 4.0,
+ &apos;Dumb &amp; Dumber (1994)&apos;: 4.0,
+ &apos;Dunston Checks In (1996)&apos;: 1.0,
+ &apos;E.T. the Extra-Terrestrial (1982)&apos;: 3.0,
+ &apos;Ed Wood (1994)&apos;: 3.0,
+ &apos;Empire Strikes Back, The (1980)&apos;: 5.0,
+ &apos;Endless Summer 2, The (1994)&apos;: 3.0,
+ &apos;Evil Dead II (1987)&apos;: 2.0,
+ &apos;Executive Decision (1996)&apos;: 3.0,
+ &apos;Fargo (1996)&apos;: 5.0,
+ &apos;First Wives Club, The (1996)&apos;: 2.0,
+ &apos;Fish Called Wanda, A (1988)&apos;: 5.0,
+ &apos;Forget Paris (1995)&apos;: 4.0,
+ &apos;Four Weddings and a Funeral (1994)&apos;: 5.0,
+ &apos;French Kiss (1995)&apos;: 5.0,
+ &apos;Fugitive, The (1993)&apos;: 5.0,
+ &apos;Full Metal Jacket (1987)&apos;: 4.0,
+ &apos;Get Shorty (1995)&apos;: 5.0,
+ &apos;Glory (1989)&apos;: 4.0,
+ &apos;Godfather, The (1972)&apos;: 4.0,
+ &apos;GoldenEye (1995)&apos;: 4.0,
+ &apos;Good, The Bad and The Ugly, The (1966)&apos;: 5.0,
+ &apos;GoodFellas (1990)&apos;: 4.0,
+ &apos;Grease (1978)&apos;: 4.0,
+ &apos;Great White Hype, The (1996)&apos;: 3.0,
+ &apos;Groundhog Day (1993)&apos;: 5.0,
+ &apos;Grumpier Old Men (1995)&apos;: 4.0,
+ &apos;Hard Target (1993)&apos;: 4.0,
+ &apos;Heat (1995)&apos;: 3.0,
+ &apos;Heathers (1989)&apos;: 3.0,
+ &apos;Home Alone (1990)&apos;: 4.0,
+ &apos;Hoop Dreams (1994)&apos;: 4.0,
+ &apos;Hot Shots! Part Deux (1993)&apos;: 4.0,
+ &apos;House Arrest (1996)&apos;: 3.0,
+ &apos;I Love Trouble (1994)&apos;: 3.0,
+ &apos;I.Q. (1994)&apos;: 5.0,
+ &apos;In the Army Now (1994)&apos;: 4.0,
+ &apos;In the Line of Fire (1993)&apos;: 5.0,
+ &apos;Independence Day (ID4) (1996)&apos;: 5.0,
+ &apos;Indiana Jones and the Last Crusade (1989)&apos;: 5.0,
+ &apos;Inkwell, The (1994)&apos;: 3.0,
+ &quot;It&apos;s a Wonderful Life (1946)&quot;: 5.0,
+ &apos;Jack (1996)&apos;: 3.0,
+ &apos;Jeffrey (1995)&apos;: 3.0,
+ &apos;Jimmy Hollywood (1994)&apos;: 3.0,
+ &quot;Joe&apos;s Apartment (1996)&quot;: 2.0,
+ &apos;Junior (1994)&apos;: 4.0,
+ &apos;Jurassic Park (1993)&apos;: 5.0,
+ &apos;Kingpin (1996)&apos;: 4.0,
+ &apos;Lightning Jack (1994)&apos;: 3.0,
+ &apos;Lost World: Jurassic Park, The (1997)&apos;: 3.0,
+ &apos;Low Down Dirty Shame, A (1994)&apos;: 3.0,
+ &apos;M*A*S*H (1970)&apos;: 5.0,
+ &apos;Magnificent Seven, The (1954)&apos;: 5.0,
+ &apos;Major Payne (1994)&apos;: 3.0,
+ &apos;Man of the House (1995)&apos;: 3.0,
+ &apos;Manchurian Candidate, The (1962)&apos;: 4.0,
+ &apos;Mars Attacks! (1996)&apos;: 3.0,
+ &apos;Mask, The (1994)&apos;: 3.0,
+ &apos;Matilda (1996)&apos;: 3.0,
+ &apos;Maverick (1994)&apos;: 3.0,
+ &apos;Michael (1996)&apos;: 4.0,
+ &apos;Mighty Aphrodite (1995)&apos;: 3.0,
+ &apos;Milk Money (1994)&apos;: 4.0,
+ &apos;Mission: Impossible (1996)&apos;: 4.0,
+ &quot;Monty Python&apos;s Life of Brian (1979)&quot;: 4.0,
+ &apos;Mother (1996)&apos;: 2.0,
+ &apos;Mrs. Doubtfire (1993)&apos;: 4.0,
+ &apos;Multiplicity (1996)&apos;: 3.0,
+ &apos;Muppet Treasure Island (1996)&apos;: 3.0,
+ &apos;My Favorite Year (1982)&apos;: 3.0,
+ &apos;Naked Gun 33 1/3: The Final Insult (1994)&apos;: 4.0,
+ &apos;Net, The (1995)&apos;: 5.0,
+ &apos;Nine Months (1995)&apos;: 4.0,
+ &apos;Nutty Professor, The (1996)&apos;: 4.0,
+ &apos;Platoon (1986)&apos;: 3.0,
+ &apos;Prefontaine (1997)&apos;: 5.0,
+ &apos;Private Benjamin (1980)&apos;: 4.0,
+ &apos;Professional, The (1994)&apos;: 4.0,
+ &apos;Program, The (1993)&apos;: 3.0,
+ &apos;Pulp Fiction (1994)&apos;: 4.0,
+ &quot;Pyromaniac&apos;s Love Story, A (1995)&quot;: 3.0,
+ &apos;Quiet Man, The (1952)&apos;: 5.0,
+ &apos;Raging Bull (1980)&apos;: 3.0,
+ &apos;Raiders of the Lost Ark (1981)&apos;: 5.0,
+ &apos;Raising Arizona (1987)&apos;: 3.0,
+ &apos;Reality Bites (1994)&apos;: 3.0,
+ &apos;Renaissance Man (1994)&apos;: 5.0,
+ &apos;Return of the Jedi (1983)&apos;: 5.0,
+ &apos;Return of the Pink Panther, The (1974)&apos;: 4.0,
+ &apos;River Wild, The (1994)&apos;: 4.0,
+ &apos;Sabrina (1995)&apos;: 4.0,
+ &apos;Santa Clause, The (1994)&apos;: 4.0,
+ &quot;Schindler&apos;s List (1993)&quot;: 4.0,
+ &apos;Searching for Bobby Fischer (1993)&apos;: 4.0,
+ &apos;Serial Mom (1994)&apos;: 1.0,
+ &apos;Shadow, The (1994)&apos;: 3.0,
+ &apos;Shawshank Redemption, The (1994)&apos;: 5.0,
+ &quot;Singin&apos; in the Rain (1952)&quot;: 4.0,
+ &apos;Sleeper (1973)&apos;: 4.0,
+ &apos;Sleepers (1996)&apos;: 4.0,
+ &apos;Sleepless in Seattle (1993)&apos;: 5.0,
+ &apos;Sneakers (1992)&apos;: 4.0,
+ &apos;So I Married an Axe Murderer (1993)&apos;: 2.0,
+ &apos;Something to Talk About (1995)&apos;: 2.0,
+ &apos;Son in Law (1993)&apos;: 4.0,
+ &apos;Speechless (1994)&apos;: 4.0,
+ &apos;Speed (1994)&apos;: 5.0,
+ &apos;Speed 2: Cruise Control (1997)&apos;: 3.0,
+ &apos;Star Trek III: The Search for Spock (1984)&apos;: 4.0,
+ &apos;Star Trek IV: The Voyage Home (1986)&apos;: 5.0,
+ &apos;Star Trek: First Contact (1996)&apos;: 4.0,
+ &apos;Star Trek: The Motion Picture (1979)&apos;: 3.0,
+ &apos;Star Trek: The Wrath of Khan (1982)&apos;: 5.0,
+ &apos;Star Wars (1977)&apos;: 5.0,
+ &apos;Stargate (1994)&apos;: 5.0,
+ &apos;Sting, The (1973)&apos;: 5.0,
+ &apos;Strange Days (1995)&apos;: 3.0,
+ &apos;Strictly Ballroom (1992)&apos;: 3.0,
+ &apos;Striptease (1996)&apos;: 2.0,
+ &apos;Supercop (1992)&apos;: 3.0,
+ &apos;Swimming with Sharks (1995)&apos;: 3.0,
+ &apos;Switchblade Sisters (1975)&apos;: 2.0,
+ &apos;Terminator 2: Judgment Day (1991)&apos;: 5.0,
+ &apos;Terminator, The (1984)&apos;: 5.0,
+ &apos;That Old Feeling (1997)&apos;: 4.0,
+ &apos;That Thing You Do! (1996)&apos;: 4.0,
+ &apos;This Is Spinal Tap (1984)&apos;: 5.0,
+ &apos;To Die For (1995)&apos;: 3.0,
+ &apos;To Kill a Mockingbird (1962)&apos;: 4.0,
+ &apos;To Wong Foo, Thanks for Everything! Julie Newmar (1995)&apos;: 3.0,
+ &apos;Tommy Boy (1995)&apos;: 4.0,
+ &apos;Top Gun (1986)&apos;: 5.0,
+ &apos;Treasure of the Sierra Madre, The (1948)&apos;: 4.0,
+ &apos;True Lies (1994)&apos;: 5.0,
+ &apos;Truth About Cats &amp; Dogs, The (1996)&apos;: 4.0,
+ &apos;Twelve Monkeys (1995)&apos;: 4.0,
+ &apos;Twister (1996)&apos;: 4.0,
+ &quot;Ulee&apos;s Gold (1997)&quot;: 3.0,
+ &apos;Under Siege (1992)&apos;: 4.0,
+ &apos;Up in Smoke (1978)&apos;: 3.0,
+ &apos;Vegas Vacation (1997)&apos;: 4.0,
+ &apos;Victor/Victoria (1982)&apos;: 4.0,
+ &apos;Waterworld (1995)&apos;: 4.0,
+ &quot;Weekend at Bernie&apos;s (1989)&quot;: 3.0,
+ &apos;When Harry Met Sally... (1989)&apos;: 5.0,
+ &apos;While You Were Sleeping (1995)&apos;: 5.0,
+ &apos;Wizard of Oz, The (1939)&apos;: 5.0,
+ &apos;Wyatt Earp (1994)&apos;: 3.0,
+ &apos;Young Frankenstein (1974)&apos;: 5.0,
+ &apos;Young Guns (1988)&apos;: 3.0,
+ &apos;Young Guns II (1990)&apos;: 2.0}
+</code></pre><p>我们可以基于用户推荐</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">getRecommendations(prefs,<span class="string">'87'</span>)[<span class="number">0</span>:<span class="number">30</span>]</div></pre></td></tr></table></figure>
+<pre><code>[(5.0, &apos;They Made Me a Criminal (1939)&apos;),
+ (5.0, &apos;Star Kid (1997)&apos;),
+ (5.0, &apos;Santa with Muscles (1996)&apos;),
+ (5.0, &apos;Saint of Fort Washington, The (1993)&apos;),
+ (5.0, &apos;Marlene Dietrich: Shadow and Light (1996) &apos;),
+ (5.0, &apos;Great Day in Harlem, A (1994)&apos;),
+ (5.0, &apos;Entertaining Angels: The Dorothy Day Story (1996)&apos;),
+ (5.0, &apos;Boys, Les (1997)&apos;),
+ (4.89884443128923, &apos;Legal Deceit (1997)&apos;),
+ (4.815019082242709, &apos;Letter From Death Row, A (1998)&apos;),
+ (4.800260666069043, &apos;Mrs. Dalloway (1997)&apos;),
+ (4.771240079753504, &apos;Leading Man, The (1996)&apos;),
+ (4.7321082983941425, &apos;Hearts and Minds (1996)&apos;),
+ (4.707354190896574, &apos;Dangerous Beauty (1998)&apos;),
+ (4.696244466490867, &apos;Pather Panchali (1955)&apos;),
+ (4.652397061026759, &apos;Lamerica (1994)&apos;),
+ (4.532337612572981, &apos;Innocents, The (1961)&apos;),
+ (4.5279985747470795, &apos;Casablanca (1942)&apos;),
+ (4.512903125553783, &apos;Four Days in September (1997)&apos;),
+ (4.510270149719864, &apos;Everest (1998)&apos;),
+ (4.485151301801342, &apos;Wallace &amp; Gromit: The Best of Aardman Animation (1996)&apos;),
+ (4.463287461290223, &apos;Wrong Trousers, The (1993)&apos;),
+ (4.450979436941035, &apos;Kaspar Hauser (1993)&apos;),
+ (4.431079071179518, &apos;Usual Suspects, The (1995)&apos;),
+ (4.427520682864959, &apos;Maya Lin: A Strong Clear Vision (1994)&apos;),
+ (4.414870784592075, &apos;Wedding Gift, The (1994)&apos;),
+ (4.407740300866055, &apos;Duoluo tianshi (1995)&apos;),
+ (4.393353032192905, &apos;Close Shave, A (1995)&apos;),
+ (4.377445252656463, &apos;Affair to Remember, An (1957)&apos;),
+ (4.374146179500976, &apos;Anna (1996)&apos;)]
+</code></pre><p>改为基于物品的推荐</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">itemsim=calculateSimilarItems(prefs,n=<span class="number">50</span>)</div></pre></td></tr></table></figure>
+<pre><code>100 / 1664
+200 / 1664
+300 / 1664
+400 / 1664
+500 / 1664
+600 / 1664
+700 / 1664
+800 / 1664
+900 / 1664
+1000 / 1664
+1100 / 1664
+1200 / 1664
+1300 / 1664
+1400 / 1664
+1500 / 1664
+1600 / 1664
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">getRecommendedItems(prefs,itemsim,<span class="string">'87'</span>)[<span class="number">0</span>:<span class="number">30</span>]</div></pre></td></tr></table></figure>
+<pre><code>[(5.0, &quot;What&apos;s Eating Gilbert Grape (1993)&quot;),
+ (5.0, &apos;Vertigo (1958)&apos;),
+ (5.0, &apos;Usual Suspects, The (1995)&apos;),
+ (5.0, &apos;Toy Story (1995)&apos;),
+ (5.0, &apos;Titanic (1997)&apos;),
+ (5.0, &apos;Sword in the Stone, The (1963)&apos;),
+ (5.0, &apos;Stand by Me (1986)&apos;),
+ (5.0, &apos;Sling Blade (1996)&apos;),
+ (5.0, &apos;Silence of the Lambs, The (1991)&apos;),
+ (5.0, &apos;Shining, The (1980)&apos;),
+ (5.0, &apos;Shine (1996)&apos;),
+ (5.0, &apos;Sense and Sensibility (1995)&apos;),
+ (5.0, &apos;Scream (1996)&apos;),
+ (5.0, &apos;Rumble in the Bronx (1995)&apos;),
+ (5.0, &apos;Rock, The (1996)&apos;),
+ (5.0, &apos;Robin Hood: Prince of Thieves (1991)&apos;),
+ (5.0, &apos;Reservoir Dogs (1992)&apos;),
+ (5.0, &apos;Police Story 4: Project S (Chao ji ji hua) (1993)&apos;),
+ (5.0, &apos;House of the Spirits, The (1993)&apos;),
+ (5.0, &apos;Fresh (1994)&apos;),
+ (5.0, &apos;Denise Calls Up (1995)&apos;),
+ (5.0, &apos;Day the Sun Turned Cold, The (Tianguo niezi) (1994)&apos;),
+ (5.0, &apos;Before the Rain (Pred dozhdot) (1994)&apos;),
+ (5.0, &apos;Assignment, The (1997)&apos;),
+ (5.0, &apos;1-900 (1994)&apos;),
+ (4.875, &quot;Ed&apos;s Next Move (1996)&quot;),
+ (4.833333333333333, &apos;Anna (1996)&apos;),
+ (4.8, &apos;Dark City (1998)&apos;),
+ (4.75, &apos;Flower of My Secret, The (Flor de mi secreto, La) (1995)&apos;),
+ (4.75, &apos;Broken English (1996)&apos;)]
+</code></pre><p>运行过程中可以发现，时间主要耗费在构造物品的相似度字典上，推荐过程几乎是瞬间完成的</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2017/05/22/吴恩达机器学习小结_其它/" data-toggle="tooltip" data-placement="top"
+                           title="吴恩达机器学习小结(3)_其它">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#协作型过滤"><span class="toc-text">协作型过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搜集偏好"><span class="toc-text">搜集偏好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#寻找相近的用户"><span class="toc-text">寻找相近的用户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#欧几里得距离"><span class="toc-text">欧几里得距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#皮尔逊相关度"><span class="toc-text">皮尔逊相关度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为评论者打分"><span class="toc-text">为评论者打分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推荐物品"><span class="toc-text">推荐物品</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#匹配商品"><span class="toc-text">匹配商品</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于物品的过滤"><span class="toc-text">基于物品的过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造物品比较数据集"><span class="toc-text">构造物品比较数据集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获得推荐"><span class="toc-text">获得推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用MovieLens数据集"><span class="toc-text">使用MovieLens数据集</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#集体智慧编程"
+                           title="集体智慧编程">集体智慧编程</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "ethanw";
+    var disqus_identifier = "https://ethanww.github.io/2017/06/18/2.提供推荐/";
+    var disqus_url = "https://ethanww.github.io/2017/06/18/2.提供推荐/";
+
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/yu-guan-tou-a">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/2956289533">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/ethanww">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ethanw 2017
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://ethanww.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-91532961-1';
+    var _gaDomain = 'ethanww.github.io';
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','null','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="/assets/img/avatar-default.jpg">
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

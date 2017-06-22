@@ -3,7 +3,7 @@
 
 <!-- Head tag -->
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="ethanw的小板凳">
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="/css/blog-style.css">
 
     <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/syntax.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <style>
@@ -42,7 +42,7 @@
 </style>
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="" class="animated fadeIn">
-<!-- Navigation -->
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
 " data-ishome = "false" >
     <div class="container-fluid">
@@ -200,6 +200,7 @@
 <li><a href="https://ethanww.github.io/2017/05/19/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93_%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/">吴恩达机器学习小结(1)_监督学习</a></li>
 <li><a href="https://ethanww.github.io/2017/05/22/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93_%E5%85%B6%E5%AE%83/">吴恩达机器学习小结(3)_其它</a></li>
 </ul>
+<p>另外，需要说明的是，由于博客暂时不能支持markdown的数学公式。暂时，你也可以选择在<a href="https://github.com/ethanww/machine-learning-notes" target="_blank" rel="external">Github</a>仓库中查看: )</p>
 <h2 id="K-means聚类"><a href="#K-means聚类" class="headerlink" title="K-means聚类"></a>K-means聚类</h2><h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><ol>
 <li>随机初始化$K$个聚类中心(cluster centroid) $\mu_1, \mu_2, \ldots, \mu_K$</li>
 <li>类分配: 对于每个数据点$x^{(i)}$，寻找离它最近的聚类中心，将其归入该类；即$c^{(i)}=\min\limits_k||x^{(i)}-\mu_k||^2$，其中$c^{(i)}$表示$x^{(i)}$所在的类</li>
@@ -560,7 +561,7 @@
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 
 </html>
